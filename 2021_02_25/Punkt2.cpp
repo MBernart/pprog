@@ -67,21 +67,21 @@ double Punkt2::getLength()
 	return sqrt(x * x + y * y);
 }
 
-// Punkt2 Punkt2::getOppositeVector()
-// {
-// 	return Punkt2(-this->getX(),
-// 				  -this->getY());
-// }
+Punkt2 Punkt2::getOppositeVector()
+{
+	return Punkt2(-this->getX(),
+				  -this->getY());
+}
 
 // skalowanie wektora przez -1 i
 // szukanie przeciwnego to operacje tożsame
 // a = p1.getOppositeVector() <=> a = p1.getScaledVector(-1)
 
-// Punkt2 Punkt2::getScaledVector(double k)
-// {
-// 	return Punkt2(this->getX() * k,
-// 				  this->getY() * k);
-// }
+Punkt2 Punkt2::getScaledVector(double k)
+{
+	return Punkt2(this->getX() * k,
+				  this->getY() * k);
+}
 
 double Punkt2::getDotProduct(Punkt2 p)
 {
@@ -93,31 +93,31 @@ double Punkt2::maximumNorm()
 	return (this->getX() > this->getY()) ? this->getX() : this->getY();
 }
 
-// Punkt2 Punkt2::addVectors(Punkt2 p)
-// {
-// 	return Punkt2(this->getX() + p.getX(), this->getY() + p.getY());
-// }
+Punkt2 Punkt2::addVectors(Punkt2 p)
+{
+	return Punkt2(this->getX() + p.getX(), this->getY() + p.getY());
+}
 
 double Punkt2::angleBetween(Punkt2 p)
 {
 	return acos(this->getDotProduct(p) / (this->getLength() * p.getLength()));
 }
 
-// Punkt2 Punkt2::operator+(const Punkt2 &p)
-// {
-// 	return this->addVectors(p);
-// }
+Punkt2 Punkt2::operator+(const Punkt2 &p)
+{
+	return this->addVectors(p);
+}
 
-// Punkt2 Punkt2::operator*(const double k)
-// {
-// 	return Punkt2::getScaledVector(k);
-// }
+Punkt2 Punkt2::operator*(const double k)
+{
+	return Punkt2::getScaledVector(k);
+}
 
-// std::ostream &operator<<(std::ostream &os, const Punkt2 &p)
-// {
-// 	os << "[" << p.x << ";" << p.y << "]";
-// 	return os;
-// }
+std::ostream &operator<<(std::ostream &os, const Punkt2 &p)
+{
+	os << "[" << p.x << ";" << p.y << "]";
+	return os;
+}
 
 void Punkt2::print()
 {

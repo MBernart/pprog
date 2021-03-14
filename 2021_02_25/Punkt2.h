@@ -69,16 +69,16 @@ public:
   double angleBetween(Punkt2);
 
   // nadpisanie operatora +
-  // Punkt2 operator+(const Punkt2 &);
+  Punkt2 operator+(const Punkt2 &);
 
   // skalowanie przez operator *
-  // Punkt2 operator*(const double);
+  Punkt2 operator*(const double);
 
   // iloczyn skalarny przez operator *
-  // double operator*(const Punkt2 &);
+  double operator*(const Punkt2 &);
 
   // nadpisanie operatora <<
-  // friend ostream &operator<<(ostream &os, const Punkt2 &);
+  friend ostream &operator<<(ostream &os, const Punkt2 &);
 
   // drukarka
   void print();
