@@ -11,13 +11,15 @@
 	* \version 1.00.00
 	*/
 
-#include "Punkt2.cpp"
+#include "Punkt2.h"
+#include "Polygon.h"
 #include <iostream>
 
 using std::cout;
 
 int main()
 {
+	/*
 	Punkt2 p1 = Punkt2(5.0, 0.6);
 
 	p1.print();
@@ -27,11 +29,7 @@ int main()
 
 	p1.print();
 
-	// Punkt2 p2;
-
-	// p2.print();
-
-	// Punkt2 p1(1, 1);
+	
 
 	cout << "Punkt p1 = " << p1 << '\n';
 
@@ -61,4 +59,7 @@ int main()
 	cout << "kąt między " << p1 << " i [1; 0] (45°) = " << p1.angleBetween(Punkt2(1, 0)) << " rad\n\n";
 
 	return 0;
+*/
+
+Polygon p;
 }

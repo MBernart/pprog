@@ -1,3 +1,7 @@
+#ifndef _PUNKT2_H
+#define _PUNKT2_H
+
+
 /*! \file Punkt2.h
 	*
 	* \brief Zawiera deklarację klasy Punkt2
@@ -11,7 +15,6 @@
 	* \version 1.00.00
 	*/
 #include <iostream>
-using namespace std;
 
 class Punkt2
 {
@@ -78,8 +81,10 @@ public:
   double operator*(const Punkt2 &);
 
   // nadpisanie operatora <<
-  friend ostream &operator<<(ostream &os, const Punkt2 &);
+  friend std::ostream &operator<<(std::ostream &os, const Punkt2 &);
 
   // drukarka
   void print();
 };
+
+#endif
