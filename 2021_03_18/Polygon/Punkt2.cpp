@@ -14,7 +14,7 @@
 	*/
 
 #include "Punkt2.h"
-#include <math.h>
+#include <cmath>
 
 using std::ostream;
 
@@ -44,7 +44,7 @@ void Punkt2::setX(double _x)
     x = _x;
 }
 
-double Punkt2::getX()
+double Punkt2::getX() const
 {
     return x;
 }
@@ -54,24 +54,24 @@ void Punkt2::setY(double _y)
     y = _y;
 }
 
-double Punkt2::getY()
+double Punkt2::getY() const
 {
     return y;
 }
 
-double Punkt2::getDistance(Punkt2 _p)
+double Punkt2::getDistance(const Punkt2& _p) const
 {
     double dx = _p.getX() - x;
     double dy = _p.getY() - y;
     return sqrt(dx * dx + dy * dy);
 }
 
-double Punkt2::getLength()
+double Punkt2::getLength() const
 {
     return sqrt(x * x + y * y);
 }
 
-Punkt2 Punkt2::getOppositeVector()
+Punkt2 Punkt2::getOppositeVector() const
 {
     return Punkt2(-this->getX(),
                   -this->getY());
@@ -81,38 +81,38 @@ Punkt2 Punkt2::getOppositeVector()
 // szukanie przeciwnego to operacje tożsame
 // a = p1.getOppositeVector() <=> a = p1.getScaledVector(-1)
 
-Punkt2 Punkt2::getScaledVector(double k)
+Punkt2 Punkt2::getScaledVector(double k) const
 {
     return Punkt2(this->getX() * k,
                   this->getY() * k);
 }
 
-double Punkt2::getDotProduct(Punkt2 p)
+double Punkt2::getDotProduct(const Punkt2& p) const
 {
     return this->getX() * p.getX() + this->getY() * p.getY();
 }
 
-double Punkt2::maximumNorm()
+double Punkt2::maximumNorm() const
 {
     return (this->getX() > this->getY()) ? this->getX() : this->getY();
 }
 
-Punkt2 Punkt2::addVectors(Punkt2 p)
+Punkt2 Punkt2::addVectors(const Punkt2& p) const
 {
     return Punkt2(this->getX() + p.getX(), this->getY() + p.getY());
 }
 
-double Punkt2::angleBetween(Punkt2 p)
+double Punkt2::getAngleBetween(const Punkt2& p) const
 {
     return acos(this->getDotProduct(p) / (this->getLength() * p.getLength()));
 }
 
-Punkt2 Punkt2::operator+(const Punkt2 &p)
+Punkt2 Punkt2::operator+(const Punkt2 &p) const
 {
     return this->addVectors(p);
 }
 
-Punkt2 Punkt2::operator*(const double k)
+Punkt2 Punkt2::operator*(const double k) const
 {
     return Punkt2::getScaledVector(k);
 }
@@ -123,7 +123,7 @@ std::ostream &operator<<(std::ostream &os, const Punkt2 &p)
     return os;
 }
 
-void Punkt2::print()
+void Punkt2::print() const
 {
     std::cout << "(" << x << ", " << y << ")\n";
 }

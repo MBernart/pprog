@@ -45,44 +45,44 @@ public:
     void setY(double);
 
     // gettery
-    double getX();
-    double getY();
+    double getX() const;
+    double getY() const;
 
     // współrzędne biegunowe
     double getRadius();
     double getAngle();
 
     // odległość punktu od punktu _p
-    double getDistance(Punkt2);
+    double getDistance(const Punkt2&) const;
 
     // zwraca odległość od początku
     // układu współrzędnych
-    double getLength();
+    double getLength() const;
 
     // zwraca wektor przeciwny
-    Punkt2 getOppositeVector();
+    Punkt2 getOppositeVector() const;
 
     // zwraca wektor przeskalowany
     // o daną wartość
-    Punkt2 getScaledVector(double);
+    Punkt2 getScaledVector(double) const;
 
     // zwraca iloczyn skalarny wektorów
-    double getDotProduct(Punkt2);
+    double getDotProduct(const Punkt2&) const;
 
     // norma maksimum
-    double maximumNorm();
+    double maximumNorm() const;
 
     // dodawanie wektorów p1 + p2
-    Punkt2 addVectors(Punkt2);
+    Punkt2 addVectors(const Punkt2&) const;
 
     // kąt między wektorami
-    double angleBetween(Punkt2);
+    double getAngleBetween(const Punkt2& p) const;
 
     // nadpisanie operatora +
-    Punkt2 operator+(const Punkt2 &);
+    Punkt2 operator+(const Punkt2 &) const;
 
     // skalowanie przez operator *
-    Punkt2 operator*(const double);
+    Punkt2 operator*(const double) const;
 
     // iloczyn skalarny przez operator *
     double operator*(const Punkt2 &);
@@ -91,7 +91,7 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const Punkt2 &);
 
     // drukarka
-    void print();
+    void print() const;
 };
 
 #endif

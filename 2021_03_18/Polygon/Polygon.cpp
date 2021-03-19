@@ -1,7 +1,7 @@
 //
 // Created by berni on 18/03/2021.
 //
-
+#include <math.h>
 #include "Polygon.h"
 
 /**
@@ -25,7 +25,7 @@ Polygon::Polygon(Punkt2 *vertices, unsigned int count)
     std::cout << "Wywołanie konstruktora dwuargumentowego\n";
     this->count = count;
 //    this->vertices = new Punkt2[count];
-    this->vertices = (Punkt2 *) malloc(count);
+    this->vertices = new Punkt2[count];
     for (int i = 0; i < count; i++)
         this->vertices[i] = vertices[i];
 }
@@ -122,14 +122,47 @@ double Polygon::getPerimeter()
  */
 Punkt2 *Polygon::getVertices()
 {
-    auto vertices_array = (Punkt2 *) malloc(count);
+    auto vertices_array = new Punkt2[count];
     for (int i = 0; i < count; i++)
         vertices_array[i] = vertices[i];
     return vertices_array;
 }
 
+/**
+ * Metoda zwraca pole trójkąta
+ *
+ * @param p1 argument typu Punkt2 przekazujący wierzchołek trójkąta
+ * @param p2 argument typu Punkt2 przekazujący wierzchołek trójkąta
+ * @param p3 argument typu Punkt2 przekazujący wierzchołek trójkąta
+ *
+ * @return wartość typu double reprezentującą pole trójkąta
+ */
 double Polygon::getTriangleArea(Punkt2 p1, Punkt2 p2, Punkt2 p3)
 {
     return (((p2.getX() - p1.getX()) * (p3.getY() - p1.getY()) -
              (p2.getY() - p1.getY()) * (p3.getX() - p1.getX()))) / 2;
 }
+
+/**
+ * Metoda obliczająca pole wielokąta wypukłego *
+ * @param convexVertex
+ *
+ * @throws There is no vertex {convexVertex}
+ *
+ * @return wartość typu double reprezentująca pole wielokąta wypukłego
+ */
+double Polygon::getConvexArea()
+{
+    double area{0.0};
+    for (int i = 1; i < count -1; i++)
+            area += getTriangleArea(vertices[0],
+                                    vertices[i], vertices[i + 1]);
+    return area;
+}
+
+double Polygon::getArea()
+{
+    double area{0.0};
+    return area;
+}
+

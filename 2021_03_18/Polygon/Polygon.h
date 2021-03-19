@@ -27,6 +27,7 @@ class Polygon
      * @return wartość typu double reprezentującą pole trójkąta
      */
     double getTriangleArea(Punkt2 p1, Punkt2 p2, Punkt2 p3);
+
 public:
     /**
      * Metoda konstruująca tablicę wierzchołków.
@@ -57,7 +58,7 @@ public:
      * @param _vertices argument typu Punkt2*  przekazujący tablicę wierzchołków wielokąta
      * @param _count argument typu  unsigned int przekazujący ilość wierzchołków.
      */
-    Polygon(Punkt2 * _vertices, uint _count);
+    Polygon(Punkt2 *_vertices, uint _count);
 
     /**
      * Konstruktor kopiujący
@@ -66,6 +67,9 @@ public:
      */
     Polygon(const Polygon &polygon);
 
+    /**
+    * Destruktor klasy Polygon
+    */
     ~Polygon();
 
     /**
@@ -100,7 +104,34 @@ public:
      *
      * @return wartość typi Punkt2* reprezentująca współrzędne wierzchołków
      */
-    Punkt2* getVertices();
+    Punkt2 *getVertices();
+
+    /**
+     * Metoda zwracająca wartość true jeśli wielokąt jest wypukły,
+     * fałsz jeśli jest wklęsły.
+     *
+     * @return wartość typu bool reprezentująca prawdziwość zdania
+     * "Wielokąt jest wypukły"
+     */
+    bool isConvex();
+
+    /**
+     * Metoda obliczająca pole wielokąta wypukłego
+     *
+     * @param convexVertex
+     *
+     * @throws There is no vertex {convexVertex}
+     *
+     * @return wartość typu double reprezentująca pole wielokąta wypukłego
+     */
+    double getConvexArea();
+
+    /**
+     * Metoda obliczająca pole dowolnego wielokąta
+     *
+     * @return wartość typu double reprezentująca pole wielokąta
+     */
+    double getArea();
 };
 
 #endif
