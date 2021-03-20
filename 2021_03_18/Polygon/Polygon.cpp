@@ -4,6 +4,8 @@
 #include <math.h>
 #include "Polygon.h"
 
+uint Polygon::number = 0;
+
 /**
  * Konstruktor domyślny klasy Polygon
  */
@@ -12,6 +14,7 @@ Polygon::Polygon()
     std::cout << "Wywołanie konstruktora domyślnego\n";
     count = 0;
     vertices = nullptr;
+    number++;
 }
 
 /**
@@ -24,10 +27,10 @@ Polygon::Polygon(Punkt2 *vertices, unsigned int count)
 {
     std::cout << "Wywołanie konstruktora dwuargumentowego\n";
     this->count = count;
-//    this->vertices = new Punkt2[count];
     this->vertices = new Punkt2[count];
     for (int i = 0; i < count; i++)
         this->vertices[i] = vertices[i];
+    number++;
 }
 
 /**
@@ -50,6 +53,8 @@ Polygon::Polygon(const Polygon &pol)
 Polygon::~Polygon()
 {
     std::cout << "Wywołanie destruktora\n";
+    number--;
+
 }
 
 /**
@@ -139,8 +144,8 @@ Punkt2 *Polygon::getVertices()
  */
 double Polygon::getTriangleArea(Punkt2 p1, Punkt2 p2, Punkt2 p3)
 {
-    return (((p2.getX() - p1.getX()) * (p3.getY() - p1.getY()) -
-             (p2.getY() - p1.getY()) * (p3.getX() - p1.getX()))) / 2;
+    return 0.5 * abs(((p2.getX() - p1.getX()) * (p3.getY() - p1.getY()) -
+                      (p2.getY() - p1.getY()) * (p3.getX() - p1.getX())));
 }
 
 /**
@@ -154,15 +159,23 @@ double Polygon::getTriangleArea(Punkt2 p1, Punkt2 p2, Punkt2 p3)
 double Polygon::getConvexArea()
 {
     double area{0.0};
-    for (int i = 1; i < count -1; i++)
-            area += getTriangleArea(vertices[0],
-                                    vertices[i], vertices[i + 1]);
+    for (int i = 1; i < count - 1; i++)
+        area += getTriangleArea(vertices[0],
+                                vertices[i], vertices[i + 1]);
     return area;
 }
 
 double Polygon::getArea()
 {
-    double area{0.0};
-    return area;
-}
+    double leftSum = 0.0;
+    double rightSum = 0.0;
 
+    for (int i = 0; i < count; ++i)
+    {
+        int j = (i + 1) % count;
+        leftSum += vertices[i].getX() * vertices[j].getY();
+        rightSum += vertices[j].getX() * vertices[i].getY();
+    }
+
+    return 0.5 * abs(leftSum - rightSum);
+}

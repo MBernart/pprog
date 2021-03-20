@@ -59,7 +59,7 @@ double Punkt2::getY() const
     return y;
 }
 
-double Punkt2::getDistance(const Punkt2& _p) const
+double Punkt2::getDistance(const Punkt2 &_p) const
 {
     double dx = _p.getX() - x;
     double dy = _p.getY() - y;
@@ -87,7 +87,7 @@ Punkt2 Punkt2::getScaledVector(double k) const
                   this->getY() * k);
 }
 
-double Punkt2::getDotProduct(const Punkt2& p) const
+double Punkt2::getDotProduct(const Punkt2 &p) const
 {
     return this->getX() * p.getX() + this->getY() * p.getY();
 }
@@ -97,12 +97,12 @@ double Punkt2::maximumNorm() const
     return (this->getX() > this->getY()) ? this->getX() : this->getY();
 }
 
-Punkt2 Punkt2::addVectors(const Punkt2& p) const
+Punkt2 Punkt2::addVectors(const Punkt2 &p) const
 {
     return Punkt2(this->getX() + p.getX(), this->getY() + p.getY());
 }
 
-double Punkt2::getAngleBetween(const Punkt2& p) const
+double Punkt2::getAngleBetween(const Punkt2 &p) const
 {
     return acos(this->getDotProduct(p) / (this->getLength() * p.getLength()));
 }

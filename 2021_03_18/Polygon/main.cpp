@@ -25,14 +25,19 @@ int main()
     auto c = p;
     uint n{2};
     // zmiana współrzędnych wierzchołka n
-//    c->changeVertex(n, 5, 5);
+    c->changeVertex(n, 5, 5);
     // wypisanie wartości obwodu wielokąta c
     cout << "Obwód kwadrata 1 na 1 wynosi: " << c->getPerimeter();
     cout << "\nPole convex kwadratu: " << c->getConvexArea();
+//    delete c;
     cout << "\n\n";
     // deklaracja trójkąta
-    auto triangle = new Polygon(new Punkt2[3]{Punkt2(0, 4), Punkt2(0, 0), Punkt2(3, 0)}, 3);
-    cout << "Pole trójkąta 3x4x5 wynosi: " << triangle->getConvexArea() << '\n'
-         << "Pole tego samego trójąta, ale liczone inną funkcją to: " << triangle->getArea();
+    auto triangle = Polygon(new Punkt2[3]{Punkt2(0, 4), Punkt2(0, 0), Punkt2(3, 0)}, 3);
+    cout << "Pole trójkąta 3x4x5 wynosi: " << triangle.getConvexArea() << '\n'
+         << "Pole tego samego trójąta, ale liczone inną funkcją to: " << triangle.getArea() << '\n';
+    cout << triangle.getPerimeter() << '\n';
+    cout << Polygon::howMany();
+    cout << "\n\n";
+
     return 0;
 }

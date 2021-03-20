@@ -14,8 +14,12 @@ class Polygon
 {
     /// Ilość wierzchołków wielokąta
     unsigned int count;
+
     /// Tablica wierzochołków
-    Punkt2 *vertices;
+    Punkt2 *vertices = nullptr;
+
+    /// Ilośc obiektów typu Polygon
+    static uint number;
 
     /**
      * Metoda zwraca pole trójkąta
@@ -27,7 +31,6 @@ class Polygon
      * @return wartość typu double reprezentującą pole trójkąta
      */
     double getTriangleArea(Punkt2 p1, Punkt2 p2, Punkt2 p3);
-
 public:
     /**
      * Metoda konstruująca tablicę wierzchołków.
@@ -132,6 +135,16 @@ public:
      * @return wartość typu double reprezentująca pole wielokąta
      */
     double getArea();
+
+    /**
+     * Metoda zwracająca ilość powstałych obiektów klasy Polygon
+     *
+     * @return wartość typu uint reprezentująca ilość powstałych wielokątów
+     */
+    static uint howMany()
+    {
+        return Polygon::number;
+    }
 };
 
 #endif
