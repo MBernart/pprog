@@ -104,7 +104,8 @@ Punkt2 Punkt2::addVectors(const Punkt2 &p) const
 
 double Punkt2::getAngleBetween(const Punkt2 &p) const
 {
-    return acos(this->getDotProduct(p) / (this->getLength() * p.getLength()));
+    double angle = acos(getDotProduct(p) / (getLength() * p.getLength()));
+    return ((angle > M_PI) ? (2 * M_PI) - angle : angle);
 }
 
 Punkt2 Punkt2::operator+(const Punkt2 &p) const

@@ -45,6 +45,7 @@ Polygon::Polygon(const Polygon &pol)
     vertices = new Punkt2[pol.count];
     for (int i = 0; i < count; i++)
         vertices[i] = pol.vertices[i];
+    number++;
 }
 
 /**
@@ -152,7 +153,7 @@ double Polygon::getTriangleArea(Punkt2 p1, Punkt2 p2, Punkt2 p3)
  * Metoda obliczająca pole wielokąta wypukłego *
  * @param convexVertex
  *
- * @throws There is no vertex {convexVertex}
+ * @throws Polygon is not convex
  *
  * @return wartość typu double reprezentująca pole wielokąta wypukłego
  */
@@ -179,3 +180,4 @@ double Polygon::getArea()
 
     return 0.5 * abs(leftSum - rightSum);
 }
+
