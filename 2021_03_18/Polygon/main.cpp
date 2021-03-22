@@ -45,7 +45,7 @@ int main()
     delete triangle;
 
     cout << "\n\n"
-         << "Ilość aktualnie instniejących obiektów typu Polygon: " << Polygon::howMany() << '\n';
+         << "Ilość aktualnie istniejących obiektów typu Polygon: " << Polygon::howMany() << '\n';
 
     return 0;
 }

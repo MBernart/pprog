@@ -69,9 +69,9 @@ Polygon::~Polygon()
 }
 
 /**
- * Metoda zmieniająca wspólrzędne i-tego wierzchołka.
+ * Metoda zmieniająca współrzędne i-tego wierzchołka.
  *
- * @param i argument typu int  przekazujący numer wierchołka do zmiany
+ * @param i argument typu int  przekazujący numer wierzchołka do zmiany
  * @param x argument typu  double przekazujący nową wartość do współrzędnej x.
  * @param y argument typu  double przekazujący nową wartość do współrzędnej y.
  *
@@ -104,7 +104,7 @@ void Polygon::setVertices(Punkt2 *_vertices, int _count)
 /**
 * Metoda ustawiająca ilość wierzchołków.
 *
-* @param n n argument typu int przekazujący ilość wierchołków
+* @param n n argument typu int przekazujący ilość wierzchołków
 *
 * @relatesalso setVertices()
 */
@@ -117,7 +117,7 @@ void Polygon::setCount(int n)
 /**
  * Metoda obliczająca obwód wielokąta
  *
- * @return wartość typu doule reprezentująca obwód wielokąta
+ * @return wartość typu double reprezentująca obwód wielokąta
  */
 double Polygon::getPerimeter() const
 {
@@ -131,7 +131,7 @@ double Polygon::getPerimeter() const
 /**
  * Metoda zwracająca wskaźnik do tablicy wierzchołków
  *
- * @return wartość typi Punkt2* reprezentująca współrzędne wierzchołków
+ * @return wartość typu Punkt2* reprezentująca współrzędne wierzchołków
  */
 Punkt2 *Polygon::getVertices() const
 {
@@ -198,7 +198,7 @@ void Polygon::print() const
     std::cout << "\nDany jest wielokąt o wierzchołkach: \n";
     for (int i = 0; i < count; i++)
         std::cout << vertices[i] << " ";
-    std::cout << "\nObwód tegowielokąta wynosi: " << getPerimeter()
-              << "\nPole convex tego wielokątu wynosi: " << getConvexArea() << '\n'
-              << "Metodą Sholeace pole wynosi: " << getArea() << '\n';
+    std::cout << "\nObwód tego wielokąta wynosi: " << getPerimeter()
+              << "\nPole convex tego wielokąta wynosi: " << getConvexArea() << '\n'
+              << "Metodą Shoelace pole wynosi: " << getArea() << '\n';
 }
