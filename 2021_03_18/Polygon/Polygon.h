@@ -30,7 +30,8 @@ class Polygon
      *
      * @return wartość typu double reprezentującą pole trójkąta
      */
-    double getTriangleArea(Punkt2 p1, Punkt2 p2, Punkt2 p3);
+    static double getTriangleArea(const Punkt2 &p1, const Punkt2 &p2, const Punkt2 &p3);
+
 public:
     /**
      * Metoda konstruująca tablicę wierzchołków.
@@ -53,7 +54,7 @@ public:
      *
      * @param i ilość wierzchołków
      */
-    Polygon(uint i);
+    explicit Polygon(uint i);
 
     /**
      * Konstruktor klasy z wierzchołkami danymi w tablicy
@@ -100,41 +101,33 @@ public:
      *
      * @return wartość typu doule reprezentująca obwód wielokąta
      */
-    double getPerimeter();
+    double getPerimeter() const;
 
     /**
      * Metoda zwracająca wskaźnik do tablicy wierzchołków
      *
      * @return wartość typi Punkt2* reprezentująca współrzędne wierzchołków
      */
-    Punkt2 *getVertices();
-
-    /**
-     * Metoda zwracająca wartość true jeśli wielokąt jest wypukły,
-     * fałsz jeśli jest wklęsły.
-     *
-     * @return wartość typu bool reprezentująca prawdziwość zdania
-     * "Wielokąt jest wypukły"
-     */
-    bool isConvex();
+    Punkt2 *getVertices() const;
 
     /**
      * Metoda obliczająca pole wielokąta wypukłego
      *
-     * @param convexVertex
-     *
-     * @throws There is no vertex {convexVertex}
-     *
      * @return wartość typu double reprezentująca pole wielokąta wypukłego
      */
-    double getConvexArea();
+    double getConvexArea() const;
 
     /**
      * Metoda obliczająca pole dowolnego wielokąta
      *
      * @return wartość typu double reprezentująca pole wielokąta
      */
-    double getArea();
+    double getArea() const;
+
+    /**
+     * Funkcja wypisuje wielokąt wraz z obliczonymi wartościami
+     */
+    void print() const;
 
     /**
      * Metoda zwracająca ilość powstałych obiektów klasy Polygon

@@ -1,18 +1,3 @@
-//
-// Created by berni on 18/03/2021.
-//
-
-/*! \file Punkt2.cpp
-	*
-	* \brief Zawiera definicję klasy Punkt2
-	*
-	* Plik zawiera implementację metod klasy Punkt2.
-	*
-	* \author Jan Nowak
-	* \date 2000.0.01
-	* \version 1.00.00
-	*/
-
 #include "Punkt2.h"
 #include <cmath>
 
@@ -24,15 +9,15 @@ Punkt2::Punkt2(double _x, double _y)
     y = _y;
 }
 
-// brak parametrów - domyślny
+/// brak parametrów - domyślny
 Punkt2::Punkt2()
 {
     x = 0.0;
     y = 0.0;
 }
 
-// konstruktor kopiujący - brak jawności
-// (w ogólności)
+/// konstruktor kopiujący - brak jawności
+//(w ogólności)
 Punkt2::Punkt2(const Punkt2 &p)
 {
     x = p.x;
@@ -124,7 +109,7 @@ std::ostream &operator<<(std::ostream &os, const Punkt2 &p)
     return os;
 }
 
-void Punkt2::print() const
+double Punkt2::operator*(const Punkt2 &p) const
 {
-    std::cout << "(" << x << ", " << y << ")\n";
+    return x * p.x + y * p.y;
 }

@@ -1,7 +1,4 @@
-//
-// Created by berni on 18/03/2021.
-//
-#include <math.h>
+#include <cmath>
 #include "Polygon.h"
 
 uint Polygon::number = 0;
@@ -32,6 +29,19 @@ Polygon::Polygon(Punkt2 *vertices, unsigned int count)
         this->vertices[i] = vertices[i];
     number++;
 }
+
+/**
+ * Konstruktor klasy - wierzchołkom przypisuje się wartości domyślne
+ *
+ * @param i ilość wierzchołków
+ */
+Polygon::Polygon(uint i)
+{
+    std::cout << "Wywołanie konstruktora jednoargumentowego\n";
+    count = i;
+    vertices = new Punkt2[count];
+}
+
 
 /**
  * Konstruktor kopiujący klasy Polygon
@@ -69,8 +79,8 @@ Polygon::~Polygon()
  */
 void Polygon::changeVertex(int i, double x, double y)
 {
-    vertices[i - 1].setX(x);
-    vertices[i - 1].setY(y);
+    vertices[i].setX(x);
+    vertices[i].setY(y);
 }
 
 /**
@@ -80,12 +90,12 @@ void Polygon::changeVertex(int i, double x, double y)
  * @param _count argument typu unsigned int przekazujący ilość wierzchołków.
  *
  * @relatesalso changeVertex()
+ * @relatesalso setCount()
  */
 void Polygon::setVertices(Punkt2 *_vertices, int _count)
 {
-    if (!(vertices == nullptr))
-        delete vertices;
-    vertices = new Punkt2[_count];
+    delete vertices;
+    setCount(_count);
     for (int i = 0; i < _count; ++i)
         changeVertex(i, _vertices[i].getX(), _vertices[i].getY());
     count = _count;
@@ -100,10 +110,7 @@ void Polygon::setVertices(Punkt2 *_vertices, int _count)
 */
 void Polygon::setCount(int n)
 {
-    Punkt2 temp_vertices[n];
-    for (int i = 0; i < count; i++)
-        temp_vertices[i] = vertices[i];
-    setVertices(temp_vertices, n);
+    vertices = new Punkt2[n];
     count = n;
 }
 
@@ -112,7 +119,7 @@ void Polygon::setCount(int n)
  *
  * @return wartość typu doule reprezentująca obwód wielokąta
  */
-double Polygon::getPerimeter()
+double Polygon::getPerimeter() const
 {
     auto perimeter{0.0};
     for (int i = 0; i < count - 1; i++)
@@ -126,7 +133,7 @@ double Polygon::getPerimeter()
  *
  * @return wartość typi Punkt2* reprezentująca współrzędne wierzchołków
  */
-Punkt2 *Polygon::getVertices()
+Punkt2 *Polygon::getVertices() const
 {
     auto vertices_array = new Punkt2[count];
     for (int i = 0; i < count; i++)
@@ -143,21 +150,18 @@ Punkt2 *Polygon::getVertices()
  *
  * @return wartość typu double reprezentującą pole trójkąta
  */
-double Polygon::getTriangleArea(Punkt2 p1, Punkt2 p2, Punkt2 p3)
+double Polygon::getTriangleArea(const Punkt2 &p1, const Punkt2 &p2, const Punkt2 &p3)
 {
-    return 0.5 * abs(((p2.getX() - p1.getX()) * (p3.getY() - p1.getY()) -
-                      (p2.getY() - p1.getY()) * (p3.getX() - p1.getX())));
+    return 0.5 * std::abs(((p2.getX() - p1.getX()) * (p3.getY() - p1.getY()) -
+                           (p2.getY() - p1.getY()) * (p3.getX() - p1.getX())));
 }
 
 /**
- * Metoda obliczająca pole wielokąta wypukłego *
- * @param convexVertex
- *
- * @throws Polygon is not convex
+ * Metoda obliczająca pole wielokąta wypukłego
  *
  * @return wartość typu double reprezentująca pole wielokąta wypukłego
  */
-double Polygon::getConvexArea()
+double Polygon::getConvexArea() const
 {
     double area{0.0};
     for (int i = 1; i < count - 1; i++)
@@ -166,18 +170,35 @@ double Polygon::getConvexArea()
     return area;
 }
 
-double Polygon::getArea()
+/**
+ * Funkcja zwraca pole wielokąta
+ *
+ * @return wartość typu double reprezentująca pole wielokąta
+ */
+double Polygon::getArea() const
 {
     double leftSum = 0.0;
     double rightSum = 0.0;
 
-    for (int i = 0; i < count; ++i)
+    for (uint i = 0; i < count; ++i)
     {
-        int j = (i + 1) % count;
+        uint j = (i + 1) % count;
         leftSum += vertices[i].getX() * vertices[j].getY();
         rightSum += vertices[j].getX() * vertices[i].getY();
     }
 
-    return 0.5 * abs(leftSum - rightSum);
+    return 0.5 * std::abs(leftSum - rightSum);
 }
 
+/**
+ * Funkcja wypisuje wielokąt wraz z obliczonymi wartościami
+ */
+void Polygon::print() const
+{
+    std::cout << "\nDany jest wielokąt o wierzchołkach: \n";
+    for (int i = 0; i < count; i++)
+        std::cout << vertices[i] << " ";
+    std::cout << "\nObwód tegowielokąta wynosi: " << getPerimeter()
+              << "\nPole convex tego wielokątu wynosi: " << getConvexArea() << '\n'
+              << "Metodą Sholeace pole wynosi: " << getArea() << '\n';
+}
