@@ -1,7 +1,3 @@
-//
-// Created by berni on 18/03/2021.
-//
-
 #ifndef PUNKT2_POLYGON_H
 #define PUNKT2_POLYGON_H
 
