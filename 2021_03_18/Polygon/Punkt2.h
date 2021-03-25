@@ -55,10 +55,13 @@ public:
     Punkt2 addVectors(const Punkt2 &) const;
 
     /// kąt między wektorami
-    double getAngleBetween(const Punkt2 &p) const;
+    double getAngleBetween(const Punkt2 &) const;
+
+    void f(Punkt2);
 
     /// nadpisanie operatora +
-    Punkt2 operator+(const Punkt2 &) const;
+//    Punkt2 operator+(const Punkt2 &) const;
+
 
     /// skalowanie przez operator *
     Punkt2 operator*(double) const;
@@ -68,7 +71,12 @@ public:
 
     /// nadpisanie operatora <<
     friend std::ostream &operator<<(std::ostream &os, const Punkt2 &);
-};
+
+    // zewnętrzny operator +
+    friend Punkt2 operator+(const Punkt2 &, const Punkt2 &);
+
+}; // Punkt2 koniec
+
 
 #endif
 

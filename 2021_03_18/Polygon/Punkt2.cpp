@@ -93,10 +93,15 @@ double Punkt2::getAngleBetween(const Punkt2 &p) const
     return ((angle > M_PI) ? (2 * M_PI) - angle : angle);
 }
 
-Punkt2 Punkt2::operator+(const Punkt2 &p) const
-{
-    return this->addVectors(p);
-}
+// Punkt2 A, B
+// Punkt2 C = A + B
+//Punkt2 Punkt2::operator+(const Punkt2 &p) const
+//{
+//    // rolę B pełni argument p!!!
+//    // rolę A pełni this (ja sam)
+////    return this->addVectors(p);
+//    return Punkt2(x + p.x, y + p.y);
+//}
 
 Punkt2 Punkt2::operator*(const double k) const
 {
@@ -112,4 +117,9 @@ std::ostream &operator<<(std::ostream &os, const Punkt2 &p)
 double Punkt2::operator*(const Punkt2 &p) const
 {
     return x * p.x + y * p.y;
+}
+
+Punkt2 operator+(const Punkt2 & p1, const Punkt2 & p2)
+{
+    return Punkt2(p1.x + p2.y, p1.x + p2.y);
 }

@@ -8,6 +8,7 @@ uint Polygon::number = 0;
  */
 Polygon::Polygon()
 {
+
     std::cout << "Wywołanie konstruktora domyślnego\n";
     count = 0;
     vertices = nullptr;

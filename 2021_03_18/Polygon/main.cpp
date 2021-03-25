@@ -46,6 +46,12 @@ int main()
 
     cout << "\n\n"
          << "Ilość aktualnie istniejących obiektów typu Polygon: " << Polygon::howMany() << '\n';
+    cout << "\n\n\n";
 
+    Punkt2 p1(1, 3), p2(5, 1), p3;
+    p3 = p1 + p2;
+//    auto p4 = p1.operator+(p2);
+    cout << "X: " << p3.getX() << "\nY: " << p3.getY() << "\n";
+//    cout << "X: " << p4.getX() << "\nY: " << p4.getY() << "\n";
     return 0;
 }
