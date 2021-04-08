@@ -1,2 +1,2 @@
 # pprog
-Zadanka z pproga
+Zadanka i kartkówki z pproga
