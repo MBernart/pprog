@@ -1,3 +1,0 @@
-/home/berni/programowanie/c++/pprog/2021_03_18/Polygon/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/berni/programowanie/c++/pprog/2021_03_18/Polygon/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/berni/programowanie/c++/pprog/2021_03_18/Polygon/cmake-build-debug/CMakeFiles/Punkt2.dir

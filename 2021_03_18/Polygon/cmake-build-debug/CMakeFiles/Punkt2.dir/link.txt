@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/Punkt2.dir/main.cpp.o CMakeFiles/Punkt2.dir/Punkt2.cpp.o CMakeFiles/Punkt2.dir/Polygon.cpp.o  -o Punkt2 
