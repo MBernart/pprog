@@ -60,8 +60,7 @@ public:
     void f(Punkt2);
 
     /// nadpisanie operatora +
-//    Punkt2 operator+(const Punkt2 &) const;
-
+    //    Punkt2 operator+(const Punkt2 &) const;
 
     /// skalowanie przez operator *
     Punkt2 operator*(double) const;
@@ -69,14 +68,16 @@ public:
     /// iloczyn skalarny przez operator *
     double operator*(const Punkt2 &) const;
 
+    /// nadpisanie operatora =
+    Punkt2 &operator=(const Punkt2 &p);
+
     /// nadpisanie operatora <<
     friend std::ostream &operator<<(std::ostream &os, const Punkt2 &);
 
-    // zewnętrzny operator +
+    /// zewnętrzny operator +
     friend Punkt2 operator+(const Punkt2 &, const Punkt2 &);
 
 }; // Punkt2 koniec
-
 
 #endif
 

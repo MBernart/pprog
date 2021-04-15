@@ -43,7 +43,6 @@ Polygon::Polygon(uint i)
     vertices = new Punkt2[count];
 }
 
-
 /**
  * Konstruktor kopiujący klasy Polygon
  *
@@ -66,7 +65,6 @@ Polygon::~Polygon()
 {
     std::cout << "Wywołanie destruktora\n";
     number--;
-
 }
 
 /**
@@ -202,4 +200,22 @@ void Polygon::print() const
     std::cout << "\nObwód tego wielokąta wynosi: " << getPerimeter()
               << "\nPole convex tego wielokąta wynosi: " << getConvexArea() << '\n'
               << "Metodą Shoelace pole wynosi: " << getArea() << '\n';
+}
+
+Polygon &Polygon::operator=(const Polygon &p)
+{
+    if (&p != this)
+    {
+        delete[] vertices;
+        count = p.count;
+        vertices = new Punkt2[count];
+        for (int i = 0; i < count; i++)
+            vertices[i] = p.vertices[i];
+    }
+    return *this;
+}
+
+Punkt2 & Polygon::operator[](int i)
+{
+    return vertices[i];
 }

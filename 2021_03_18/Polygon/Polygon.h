@@ -134,6 +134,11 @@ public:
     {
         return Polygon::number;
     }
+
+    Polygon &operator=(const Polygon &);
+
+    Punkt2 & operator[](int i);
+
 };
 
 #endif

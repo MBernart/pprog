@@ -119,7 +119,20 @@ double Punkt2::operator*(const Punkt2 &p) const
     return x * p.x + y * p.y;
 }
 
-Punkt2 operator+(const Punkt2 & p1, const Punkt2 & p2)
+Punkt2 operator+(const Punkt2 &p1, const Punkt2 &p2)
 {
     return Punkt2(p1.x + p2.y, p1.x + p2.y);
+}
+
+Punkt2 &Punkt2::operator=(const Punkt2 &p)
+{
+    if (&p != this)
+    {
+        x = p.x;
+        y = p.y;
+    }
+    else 
+    std::cout << "Jestem tym samym!!\n";
+
+    return *this;
 }
