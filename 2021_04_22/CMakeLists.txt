@@ -4,7 +4,7 @@ project(2021_04_22 VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
-add_executable(2021_04_22 main.cpp Punkt2.cpp Punkt2.h)
+add_executable(2021_04_22 main.cpp)
 
 set (CMAKE_CXX_STANDARD 17)
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
