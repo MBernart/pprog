@@ -1,3 +1,13 @@
+/**
+ * @file Polygon.h
+ * @author Mateusz Bernart (mateuszbernart@gmail.com)
+ * @brief plik nagłówkowy klasy Polygon
+ * @version 0.1
+ * @date 2021-04-25
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef PUNKT2_POLYGON_H
 #define PUNKT2_POLYGON_H
 
@@ -137,8 +147,7 @@ public:
 
     Polygon &operator=(const Polygon &);
 
-    Punkt2 & operator[](int i);
-
+    Punkt2 &operator[](int i);
 };
 
 #endif

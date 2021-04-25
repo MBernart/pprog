@@ -1,3 +1,13 @@
+/**
+ * @file Punkt2.h
+ * @author Mateusz Bernart (mateuszbernart@gmail.com)
+ * @brief plik nagłówkowy klasy Punkt2
+ * @version 0.1
+ * @date 2021-04-25
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef PUNKT2_PUNKT2_H
 #define PUNKT2_PUNKT2_H
 

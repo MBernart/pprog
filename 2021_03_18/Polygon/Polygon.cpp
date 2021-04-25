@@ -1,3 +1,13 @@
+/**
+ * @file Polygon.cpp
+ * @author Mateusz Bernart (mateuszbernart@gmail.com)
+ * @brief implementacja klasy Polygon
+ * @version 0.1
+ * @date 2021-04-25
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include <cmath>
 #include "Polygon.h"
 
@@ -215,7 +225,7 @@ Polygon &Polygon::operator=(const Polygon &p)
     return *this;
 }
 
-Punkt2 & Polygon::operator[](int i)
+Punkt2 &Polygon::operator[](int i)
 {
     return vertices[i];
 }

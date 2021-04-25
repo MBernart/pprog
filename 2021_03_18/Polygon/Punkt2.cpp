@@ -1,3 +1,13 @@
+/**
+ * @file Punkt2.cpp
+ * @author Mateusz Bernart (mateuszbernart@gmail.com)
+ * @brief implementacja klasy Punkt2
+ * @version 0.1
+ * @date 2021-04-25
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "Punkt2.h"
 #include <cmath>
 
@@ -131,8 +141,8 @@ Punkt2 &Punkt2::operator=(const Punkt2 &p)
         x = p.x;
         y = p.y;
     }
-    else 
-    std::cout << "Jestem tym samym!!\n";
+    else
+        std::cout << "Jestem tym samym!!\n";
 
     return *this;
 }
