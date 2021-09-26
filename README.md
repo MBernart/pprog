@@ -1,2 +1,2 @@
 # pprog
-Zadanka i kartkówki z pproga
+Zadanka, kartkówki oraz projekt z Pracowni Programowania
