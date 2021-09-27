@@ -76,28 +76,28 @@ class DatabaseHandler
     public function setSreverAddress(string $serverAddress)
     {
         if (empty($serverAddress))
-            throw new Exception("Error Processing Request", 1);
+            throw new Exception("Empty value is not allowed as a parameter for function " . __METHOD__, 1);
         $this->serverAddress = $serverAddress;
     }
 
     public function setDatabaseName(string $databaseName)
     {
         if (empty($databaseName))
-            throw new Exception("Error Processing Request", 1);
+            throw new Exception("Empty value is not allowed as a parameter for function " . __METHOD__, 1);
         $this->databaseName = $databaseName;
     }
 
     public function setUsername(string $username)
     {
         if (empty($username))
-            throw new Exception("Error Processing Request", 1);
+            throw new Exception("Empty value is not allowed as a parameter for function " . __METHOD__, 1);
         $this->username = $username;
     }
 
     public function setPassword(string $password)
     {
         if (empty($password))
-            throw new Exception("Error Processing Request", 1);
+            throw new Exception("Empty value is not allowed as a parameter for function " . __METHOD__, 1);
         $this->password = $password;
     }
     #endregion
@@ -105,7 +105,7 @@ class DatabaseHandler
     #region 
     public function __toString()
     {
-        return "ServerAddress: " . $this->serverAddress . PHP_EOL . "DatabaseName: " . $this->databaseName . PHP_EOL . "Username: " . $this->username . PHP_EOL . "Password: ****" . PHP_EOL;
+        return "ServerAddress: " . $this->serverAddress . "<br>" . "DatabaseName: " . $this->databaseName . "<br>" . "Username: " . $this->username . "<br>" . "Password: ****" . "<br>";
     }
     #endregion
 }
