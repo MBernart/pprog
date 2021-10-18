@@ -17,7 +17,6 @@ class CreateLoginCredentialsTable extends Migration
             $table->id();
             $table->string('login');
             $table->string('password');
-            $table->string('salt');
             $table->timestamps();
         });
     }

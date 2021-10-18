@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(LoginCredentials::class);
     }
+
+    public function CoursesTheMemberIsAssignedTo()
+    {
+        return $this->belongsToMany(Course::class, 'course_memberships', 'user_id', 'course_id');
+    }
 }
