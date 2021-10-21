@@ -20,6 +20,7 @@ class CreateTestAccessesTable extends Migration
             $table->foreignId('membership_id')
                 ->references('id')
                 ->on('course_memberships');
+            $table->timestamp('expiration_date');
             $table->timestamps();
         });
     }
