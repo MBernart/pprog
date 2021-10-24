@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Test extends Model
 {
     use HasFactory;
+
+    public function Questions()
+    {
+        return $this->hasMany(TestQuestion::class, 'test_id', 'id');
+    }
 }

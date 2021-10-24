@@ -14,8 +14,13 @@ class Course extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function Members()
+    public function Memberships()
     {
-        return $this->belongsToMany(User::class, 'course_memberships', 'course_id', 'user_id');
+        return $this->hasMany(CourseMembership::class, 'course_id', 'id');
+    }
+
+    public function Tests()
+    {
+        return $this->hasMany(Test::class, 'course_id', 'id');
     }
 }
