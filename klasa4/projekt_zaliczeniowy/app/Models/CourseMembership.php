@@ -23,4 +23,9 @@ class CourseMembership extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
+    public function TestApproaches()
+    {
+        return $this->hasMany(TestApproach::class, 'id', 'membership_id');
+    }
 }
