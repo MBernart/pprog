@@ -28,4 +28,9 @@ class CourseMembership extends Model
     {
         return $this->hasMany(TestApproach::class, 'id', 'membership_id');
     }
+
+    public function AccessibleTests()
+    {
+        return $this->belongsToMany(Test::class, 'test_accesses', 'test_id', 'test_id');
+    }
 }

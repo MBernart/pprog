@@ -20,7 +20,7 @@ class CreateTestsTable extends Migration
             $table->foreignId('course_id')
                 ->references('id')
                 ->on('courses');
-            $table->time('duration');
+            $table->unsignedInteger('duration');
             $table->timestamps();
         });
     }

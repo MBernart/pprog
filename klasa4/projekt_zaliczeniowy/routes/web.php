@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/hello-laravel', function () {
     return view('welcome');
 });
+
+Route::get('/hello-world', function()
+{
+    return view("hello-world");
+});
+
+Route::get('/test-approach', function() {
+    return view("test-approach");
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

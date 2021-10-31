@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class LoginCredentials extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'login',
+        'password'
+    ];
 }
