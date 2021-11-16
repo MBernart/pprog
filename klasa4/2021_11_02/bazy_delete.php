@@ -12,7 +12,7 @@
         td {
             border: 1px solid black;
             border-collapse: collapse;
-            font-size: 1.5rem;
+            /* font-size: rem; */
         }
 
         td {
@@ -24,13 +24,15 @@
 <body>
     <?php
     require_once("skrypty/connect.php");
-    $sql = "SELECT * FROM `users`";
+    $sql = "SELECT `users`.`id`, `users`.`name` as `name`, `surname`, `birthday`, `height`, `cities`.`name` as `city`
+    FROM `users`
+    INNER JOIN `cities`
+    ON `users`.`cityid` = `cities`.`id`
+    ";
     $result = $connection->query($sql);
-    // echo "<pre>";
-    // print_r($result);
-    // echo "</pre>";
-    // $rows = $result->fetch_assoc();
-    // echo "<pre>";
+
+    // $result->error_log;
+    echo $connection->error;
     if (isset($_GET['deletedUser']))
     {
         echo "<strong><p style='font-size: 2em'>Poprawnie usunięto 
@@ -46,6 +48,17 @@
     echo "<main style='display: flex;'>";
 
     echo "<table style='margin-right: 20px'>";
+    echo <<< HEAD
+        <td style="text-align: center;">Id</td>
+        <td style="text-align: center;">Imię</td>
+        <td style="text-align: center;">Nazwisko</td>
+        <td style="text-align: center;">Miasto</td>
+        <td style="text-align: center;">Data urodzenia</td>
+        <td style="text-align: center;">Wzrost</th>
+        <td style="text-align: center;">USUWAŃSKO</td>
+        <td style="text-align: center;">EDYCJA</td>
+
+HEAD;
     foreach ($result as $row)
     {
         echo "<tr>";
@@ -53,13 +66,17 @@
         {
             $row['height'] = '-';
         }
+        $city = ucwords($row['city']);
         echo <<< ROW
         
-        <td>Id: $row[id]</td>
-        <td>Imię: $row[name]</td>
-        <td>Nazwisko: $row[surname]</td>
-        <td>Wzrost: $row[height]</td>
-        <td><a href="skrypty/delete.php?id=$row[id]">Usuń</a></td>
+        <td style="text-align: center;">$row[id]</td>
+        <td style="text-align: center;">$row[name]</td>
+        <td style="text-align: center;">$row[surname]</td>
+        <td style="text-align: center;">$city</td>
+        <td style="text-align: center;">$row[birthday]</td>
+        <td style="text-align: center;">$row[height]</td>
+        <td style="text-align: center;"><a href="skrypty/delete.php?id=$row[id]" style="color: Purple;   text-decoration: none;"><strong>Usuń<strong></a></td>
+        <td style="text-align: center;"><a href="update.php?id=$row[id]" style="color: Purple;   text-decoration: none;"><strong>Aktualizuj<strong></a></td>
 ROW;
         echo '</tr>';
     }
@@ -88,6 +105,30 @@ ROW;
             </tr>
             <tr>
                 <td>
+                    Miasto:
+                </td>
+                <td>
+                    <!-- <input type="number" name="cityid"> -->
+                    <!-- select -->
+                    <select name="cityid" id="">
+                        <?php
+                        $sql = 'SELECT * FROM cities';
+                        $result = $connection->query($sql);
+
+                        foreach ($result as $row)
+                        {
+                            $name = ucwords($row['name']);
+                            $id = $row['id'];
+                            echo <<< CITY
+                    <option value="$id">$name</option>
+CITY;
+                        }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     Wzrost:</td>
                 <td><input type="number" name="height" min="100" max="300">
                 </td>
@@ -95,6 +136,14 @@ ROW;
             <tr style="justify-content: center;">
                 <td colspan="2">
                     <input type="submit" value="Dodaj">
+                    <p style="color: red;">
+                        <?php
+                        if (isset($_GET['error']))
+                        {
+                            echo "<strong>$_GET[error]</strong>";
+                        }
+                        ?>
+                    </p>
                 </td>
             </tr>
         </table>
