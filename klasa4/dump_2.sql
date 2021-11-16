@@ -36,7 +36,6 @@ CREATE TABLE IF NOT EXISTS `pprog_lekcja`.`users` (
 --
 
 INSERT INTO `pprog_lekcja`.`users` (`name`, `surname`, `birthday`, `height`) VALUES
-('Jarosław', 'Szyperczyński', '1564-10-11', '150.00'),
 ('Marta', 'Grześkuwska', '1999-12-06', '160.00'),
 ('Benigna', 'Jaskulska', '1800-12-24', '100.00'),
 ('Romuald', 'Jędraszewski', '1969-09-15', '178.00'),
