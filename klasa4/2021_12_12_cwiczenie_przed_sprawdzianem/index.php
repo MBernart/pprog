@@ -84,7 +84,7 @@
                     <td><?php print $row['nazwa'] ?></td>
                     <td><?php print $row['rodzaj'] ?></td>
                     <td><?php print $row['data_utworzenia'] ?></td>
-                    <td><a href="?update_id=<?php echo $row['id']?>">Aktualizuj</a></td>
+                    <td><a href="?update_id=<?php echo $row['id'] ?>">Aktualizuj</a></td>
                 </tr>
         <?php
             }
