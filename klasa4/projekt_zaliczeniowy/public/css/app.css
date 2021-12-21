@@ -1,0 +1,32 @@
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+}
+
+header > h1 {
+    width: 50%;
+    text-align: center;
+}
+
+nav {
+    height: 100%;
+    width: 50%;
+}
+
+nav > ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+nav > ul > li {
+    font-family: cursive;
+    font-size: 2em;
+}
