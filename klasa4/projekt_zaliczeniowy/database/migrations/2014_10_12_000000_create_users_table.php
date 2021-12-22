@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->string('password', 60);
             $table->timestamp('email_verified_at')->nullable();
-            $table->foreignIdFor(\App\Models\LoginCredentials::class, "related_login_id");
             $table->rememberToken();
             $table->timestamps();
         });

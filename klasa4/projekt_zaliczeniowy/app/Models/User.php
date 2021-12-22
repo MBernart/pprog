@@ -43,13 +43,13 @@ class User extends Authenticatable
         'created_at' => 'datetime',
         'updated_at_at' => 'datetime',
     ];
-    public function LoginCredentials()
-    {
-        return $this->belongsTo(LoginCredentials::class);
-    }
-
     public function CoursesTheMemberIsAssignedTo()
     {
         return $this->belongsToMany(Course::class, 'course_memberships', 'user_id', 'course_id');
+    }
+
+    public function username()
+    {
+        return 'username';
     }
 }

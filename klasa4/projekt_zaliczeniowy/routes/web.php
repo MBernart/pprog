@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Models\LoginCredentials;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,14 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (Request $request)
+Route::get('/', function ()
 {
-    $request->session()->put('test', 'abc');
+    // $request->session()->put('test', 'abc');
     return view('welcome');
 });
 
-Route::get('/login', function (Request $request)
+Route::get('/login', function ()
 {
-    $test = $request->session()->get('test');
-    return view("login", ['users'=> User::all()]);
+    return view('login', ['users' => User::first()]);
 });
+
+Route::post('/login', [AuthController::class, 'login']);
