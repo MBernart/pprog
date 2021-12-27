@@ -21,11 +21,13 @@ Route::get('/', function ()
 {
     // $request->session()->put('test', 'abc');
     return view('welcome');
-});
+})->middleware('auth');
 
 Route::get('/login', function ()
 {
     return view('login', ['users' => User::first()]);
-});
+})->name('login');
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::get('logout', [AuthController::class, 'logout']);
+
+Route::post('login', [AuthController::class, 'login']);

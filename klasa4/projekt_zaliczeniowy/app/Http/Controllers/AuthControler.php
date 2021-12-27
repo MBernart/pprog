@@ -25,8 +25,14 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials))
         {
-            return redirect()->intended('welcome');
+            return redirect()->intended('/');
         }
+        return redirect()->guest('login');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
         return redirect()->guest('login');
     }
 }
