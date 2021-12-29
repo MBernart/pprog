@@ -19,13 +19,13 @@
         <h1>NAGŁÓWEK</h1>
         <nav>
             @hasSection('nav')
-                @yield('nav')
+            @yield('nav')
             @else
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Tests</li>
-                </ul>
+            <ul>
+                <li><a href=""> Home</a></li>
+                <li><a href=""> About</a></li>
+                <li><a href=""> Tests</a></li>
+            </ul>
             @endif
 
         </nav>
@@ -33,7 +33,7 @@
 
     <main>
         @hasSection('content')
-            @yield('content')
+        @yield('content')
         @endif
     </main>
 </body>
