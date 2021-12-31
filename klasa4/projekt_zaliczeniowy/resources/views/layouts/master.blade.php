@@ -8,9 +8,6 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <style>
-
-    </style>
     <title>@yield('title')</title>
 </head>
 
@@ -22,13 +19,16 @@
             @yield('nav')
             @else
             <ul>
-                <li><a href=""> Home</a></li>
-                <li><a href=""> About</a></li>
-                <li><a href=""> Tests</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Tests</a></li>
             </ul>
             @endif
 
         </nav>
+        <!-- <p>
+            <i class="glyphicon glyphicon-log-out" style="font-size:30px"></i>
+        </p> -->
     </header>
 
     <main>

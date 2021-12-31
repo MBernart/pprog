@@ -5,6 +5,8 @@ use App\Models\LoginCredentials;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +21,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function ()
 {
-    // $request->session()->put('test', 'abc');
     return view('welcome');
 })->middleware('auth');
 
+#region User
 Route::get('/login', function ()
 {
     return view('login', ['users' => User::first()]);
 })->name('login');
 
-Route::get('logout', [AuthController::class, 'logout']);
+Route::get("/profile", function ()
+{
+    return view('profile');
+})->middleware('auth');
 
-Route::post('login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::post('/login', [AuthController::class, 'login']);
+#endregion
