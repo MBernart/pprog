@@ -25,17 +25,24 @@ Route::get('/', function ()
 })->middleware('auth');
 
 #region User
-Route::get('/login', function ()
+Route::get('login', function ()
 {
-    return view('login', ['users' => User::first()]);
+    return view('login');
 })->name('login');
 
-Route::get("/profile", function ()
+Route::get('register', function ()
+{
+    return view('register');
+})->name('register');
+
+Route::get("profile", function ()
 {
     return view('profile');
 })->middleware('auth');
 
-Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('logout', [AuthController::class, 'logout']);
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login']);
+
+Route::post('register', [AuthController::class, 'register']);
 #endregion
