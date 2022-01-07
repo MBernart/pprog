@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\Console\Input\Input;
+use Symfony\Component\HttpFoundation\InputBag;
 
 class AuthController extends Controller
 {
@@ -53,16 +55,28 @@ class AuthController extends Controller
 
     public function register()
     {
-        Validator::make(request(), [
+        Validator::make(request()->all(), [
             'username' => 'required',
             'email' => 'required|email',
             'password' => 'required',
         ])->validate();
         if (User::where('username', request('username'))->exists())
         {
-            return redirect()->back()->with('error', "Nazwa użytkownika request('username') jest już zajęta!");
+            $myErrors['username'] = "Ta nazwa użytkownika jest już zajęta!";
+        }
+        if (User::where('email', request('email'))->exists())
+        {
+            $myErrors['email'] = "Ten adres mailowy jest już zajęty";
+        }
+        if (isset($myErrors))
+        {
+            // ddd($myErrors);
+            // ddd(request()->old());
+            return redirect()->back()->exceptInput('password')->withErrors($myErrors);
         }
         $credentials = request(['username', 'password']);
+        $user = new User(request(['username', 'email', 'password']));
+        $user->save();
         $this->login();
         return redirect()->intended('/');
     }

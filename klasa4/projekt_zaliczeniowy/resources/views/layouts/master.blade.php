@@ -11,31 +11,51 @@
     <title>@yield('title')</title>
 </head>
 
-<body>
-    <header>
-        <h1>NAGŁÓWEK</h1>
-        <nav>
+<body class="container min-vh-100">
+    <!-- <div id="header-container" class="vw-100 " style="height: 5vh;"> -->
+    <header class="row d-flex align-items-center mb-3 mt-2">
+        <!-- <h1 class="col-4 text-center">NAGŁÓWEK</h1> -->
+        <div class="col-2 d-flex justify-content-center h-100 mt-2 mb-2" style="border-right: 1px dotted #333;">
+            <img style="width: 50px; height: 50px;" src="{{ asset('assets/logo.png') }}" alt="">
+        </div>
+        <nav class="col-10 h-100">
             @hasSection('nav')
             @yield('nav')
             @else
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Tests</a></li>
+            <ul class="list-unstyled d-flex align-items-center justify-content-around m-0">
+                <li class=""><a class="text-decoration-none link-dark align-middle h4 pe-2" href="/"></a></li>
+                <li class=""><a class="text-decoration-none link-dark align-middle h4 ps-2 pe-2" href="/">Home</a></li>
+                <li class=""><a class="text-decoration-none link-dark align-middle h4 ps-2 pe-2" href="">About</a></li>
+                <li class=""><a class="text-decoration-none link-dark align-middle h4 ps-2 pe-2" href="">Tests</a></li>
+                @guest
+                <li class=""><a class="text-decoration-none link-dark align-middle h4 ps-2 pe-2" href="{{ url('register') }}">Zarejestruj się</a></li>
+                @endguest
+                @auth
+                <li class=""><a class="text-decoration-none link-dark align-middle h4" href='{{ url("logout") }}'>Wyloguj</a></li>
+                @endauth
             </ul>
             @endif
 
         </nav>
         <!-- <p>
-            <i class="glyphicon glyphicon-log-out" style="font-size:30px"></i>
-        </p> -->
+                <i class="glyphicon glyphicon-log-out" style="font-size:30px"></i>
+            </p> -->
     </header>
-
+    @guest
+    <a class="position-absolute end-0 top-0 pe-2 text-decoration-none link-dark" href="{{ url('login') }}">Zaloguj się</a>
+    @endguest
+    @auth
+    <p class="position-absolute end-0 top-0 pe-2">Użytkownik: {{ Auth::user()->username; }}</p>
+    @endauth
+    <!-- </div> -->
     <main>
         @hasSection('content')
         @yield('content')
         @endif
     </main>
+    <footer>
+
+    </footer>
 </body>
 
 </html>
