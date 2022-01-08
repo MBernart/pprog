@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Models\LoginCredentials;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -45,4 +46,10 @@ Route::get('logout', [AuthController::class, 'logout']);
 Route::post('login', [AuthController::class, 'login']);
 
 Route::post('register', [AuthController::class, 'register']);
+
+Route::post('updateEmail', [UserController::class, 'updateEmail'])
+->name('updateEmail');
+
+Route::post('changePassword', [UserController::class, 'changePassword'])
+->name('changePassword');
 #endregion

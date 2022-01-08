@@ -70,8 +70,6 @@ class AuthController extends Controller
         }
         if (isset($myErrors))
         {
-            // ddd($myErrors);
-            // ddd(request()->old());
             return redirect()->back()->exceptInput('password')->withErrors($myErrors);
         }
         $credentials = request(['username', 'password']);
