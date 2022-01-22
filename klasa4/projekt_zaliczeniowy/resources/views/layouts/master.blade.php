@@ -25,27 +25,25 @@
             <ul class="list-unstyled d-flex align-items-center justify-content-around m-0">
                 <li class=""><a class="text-decoration-none link-dark align-middle h4 pe-2" href="/"></a></li>
                 <li class=""><a class="text-decoration-none link-dark align-middle h4 ps-2 pe-2" href="/">Home</a></li>
-                <li class=""><a class="text-decoration-none link-dark align-middle h4 ps-2 pe-2" href="">About</a></li>
-                <li class=""><a class="text-decoration-none link-dark align-middle h4 ps-2 pe-2" href="">Tests</a></li>
+                <li class=""><a class="text-decoration-none link-dark align-middle h4 ps-2 pe-2" href="{{ url('courses') }}">Courses</a></li>
+                <li class=""><a class="text-decoration-none link-dark align-middle h4 ps-2 pe-2" href="{{ url('tests') }}">Tests</a></li>
                 @guest
                 <li class=""><a class="text-decoration-none link-dark align-middle h4 ps-2 pe-2" href="{{ url('register') }}">Zarejestruj się</a></li>
                 @endguest
-                @auth
+                <!-- @auth
                 <li class=""><a class="text-decoration-none link-dark align-middle h4" href='{{ url("logout") }}'>Wyloguj</a></li>
-                @endauth
+                @endauth -->
             </ul>
             @endif
 
         </nav>
-        <!-- <p>
-                <i class="glyphicon glyphicon-log-out" style="font-size:30px"></i>
-            </p> -->
+        <hr>
     </header>
     @guest
     <a class="position-absolute end-0 top-0 pe-2 text-decoration-none link-dark" href="{{ url('login') }}">Zaloguj się</a>
     @endguest
     @auth
-    <p class="position-absolute end-0 top-0 pe-2">Użytkownik: {{ Auth::user()->username; }}</p>
+    <p class="position-absolute end-0 top-0 pe-2">Użytkownik: {{ Auth::user()->username; }} (<a href=" {{ url('logout') }}">wyloguj</a>) </p>
     @endauth
     <!-- </div> -->
     <main>
