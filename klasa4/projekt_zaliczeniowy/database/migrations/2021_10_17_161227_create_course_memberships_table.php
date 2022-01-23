@@ -27,6 +27,7 @@ class CreateCourseMembershipsTable extends Migration
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users');
+            $table->unique(['course_id', 'user_id']);
             $table->foreignId('access_level')
                 ->references('level')
                 ->on('course_membership_access_levels');
