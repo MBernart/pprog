@@ -37,7 +37,7 @@ class AuthController extends Controller
         ])->validate();
         $credentials = request(['username', 'password']);
         // return request('username');
-        if (Auth::attempt($credentials))
+        if (Auth::attempt($credentials, request('remember')))
         {
             return redirect()->intended('/');
         }

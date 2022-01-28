@@ -19,7 +19,7 @@
                             <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Login:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control-plaintext" value="{{ Auth::user()->username }}">
+                                <input id="username" type="text" class="form-control-plaintext" value="{{ Auth::user()->username }}" readonly>
                             </div>
                         </div>
 
@@ -48,7 +48,7 @@
                             <label class="col-md-4 col-form-label text-md-end">{{ __('Zmodyfikowano:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="last-modification-date" type="text" class="form-control-plaintext" value="{{ Auth::user()->updated_at }}">
+                                <input id="last-modification-date" type="text" class="form-control-plaintext" value="{{ Auth::user()->updated_at }}" readonly>
                             </div>
                         </div>
 
@@ -56,7 +56,7 @@
                             <label class="col-md-4 col-form-label text-md-end">{{ __('Utworzono:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="last-modification-date" type="text" class="form-control-plaintext" value="{{ Auth::user()->created_at }}">
+                                <input id="last-modification-date" type="text" class="form-control-plaintext" value="{{ Auth::user()->created_at }}" readonly>
                             </div>
                         </div>
 
