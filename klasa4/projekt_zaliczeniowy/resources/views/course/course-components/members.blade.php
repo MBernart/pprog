@@ -22,8 +22,12 @@
                     <td class="text-center" title="{{ $user->email }}">{{ $user->username }}</td>
                     <td class="text-center">{{ $membership->AccessLevel->description }}</td>
                     <td class="text-center">{{ $membership->updated_at }}</td>
-                    <td class="text-center"><a href=""></a></td>
-                    <td class="text-center"><a class="text-decoration-none" href=""> <h3><i class="fa fa-minus-circle" aria-hidden="true"></i></h3></a></td>
+                    <td class="text-center"><a class="text-decoration-none text-dark" href="#">
+                            <h3><i class="fa fa-book" aria-hidden="true"></i></h3>
+                        </a></td>
+                    <td class="text-center"><a class="text-decoration-none text-dark" href="#">
+                            <h3><i class="fa fa-minus-circle" aria-hidden="true"></i></h3>
+                        </a></td>
                 </tr>
                 @endforeach
             </tbody>
