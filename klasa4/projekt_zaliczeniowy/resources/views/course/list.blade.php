@@ -12,7 +12,7 @@
         <div class="col-3 text-center"><strong>Opis</strong></div>
         <div class="col text-center"><strong>Właściciel</strong></div>
         <div class="col text-center"><strong>Data ostatniej modyfikacji</strong></div>
-        <div class="col text-center"><strong>Ilość uczestników</strong></div>
+        <div class="col text-center"><strong>Liczba uczestników</strong></div>
     </div>
     <hr>
 
