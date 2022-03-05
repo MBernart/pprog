@@ -13,4 +13,9 @@ class Test extends Model
     {
         return $this->hasMany(TestQuestion::class, 'test_id', 'id');
     }
+
+    public function TestApproaches()
+    {
+        return $this->hasMany(TestApproach::class, "test_id", 'id');
+    }
 }
