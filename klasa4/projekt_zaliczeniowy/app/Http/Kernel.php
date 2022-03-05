@@ -26,6 +26,7 @@ class Kernel extends HttpKernel
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
         \App\Http\Middleware\EncryptCookies::class,
+        \App\Http\Middleware\PreventBackHistory::class,
     ];
 
     /**

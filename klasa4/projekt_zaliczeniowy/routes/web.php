@@ -71,3 +71,8 @@ Route::get('course/{course_id}', function ($course_id)
     return view('course.course', ['course' => Course::where('id', $course_id)->first()]);
 })->middleware('auth');
 #endregion
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+	Auth::routes();
+	Route::get('/home', 'HomeController@index');
+});
