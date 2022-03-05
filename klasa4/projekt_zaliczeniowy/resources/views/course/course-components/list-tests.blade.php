@@ -1,9 +1,15 @@
 TODO: TESTS LIST
 
-{{ $course->Tests }}
+<!-- {{ $course->Tests }} -->
 
 <div class="row justify-content-center">
     <div class="col">
+        <div class="d-flex justify-content-end me-5">
+
+            <a type="button" class="col-3 btn btn-primary">
+                Utwórz test
+            </a>
+        </div>
         <table class="table table-hover">
             Filter:
             <i class="fa fa-filter" aria-hidden="true"></i>
