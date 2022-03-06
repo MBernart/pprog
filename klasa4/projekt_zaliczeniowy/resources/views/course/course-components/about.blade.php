@@ -10,7 +10,7 @@
                         <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nazwa kursu:') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" required value="{{$course->name}}">
+                            <input id="name" type="text" class="form-control{{set_plaintext(!$is_owner) }} @error('name') is-invalid @enderror" name="name" required value="{{$course->name}}" {{ set_readonly(!$is_owner) }}>
 
                             @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -24,7 +24,7 @@
                         <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Opis:') }}</label>
 
                         <div class="col-md-6">
-                            <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required value="{{$course->description}}">
+                            <input id="description" type="text" class="form-control{{set_plaintext(!$is_owner) }} @error('description') is-invalid @enderror" name="description" required value="{{$course->description}}" {{ set_readonly(!$is_owner) }}>
 
                             @error('description')
                             <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
                             <input id="owner" type="text" class="form-control-plaintext @error('owner') is-invalid @enderror" name="owner" required value="{{$course->Owner()->first()->username}}" readonly>
                         </div>
                     </div>
-
+                    @if ($is_owner)
                     <div class="row mb-0">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary">
@@ -49,6 +49,7 @@
                             </button>
                         </div>
                     </div>
+                    @endif
                 </form>
             </div>
         </div>

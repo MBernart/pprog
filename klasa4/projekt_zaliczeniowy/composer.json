@@ -26,6 +26,9 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
+        "files": [
+            "app/helpers.php"
+        ],
         "classmap": [
             "app/Http/Controllers"
         ]

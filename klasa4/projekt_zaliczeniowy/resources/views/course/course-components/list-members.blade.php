@@ -10,10 +10,12 @@
                     <th class="text-center" scope="col">#</th>
                     <th class="text-center" scope="col">{{ _('Nazwa użytkownika') }}</th>
                     <th class="text-center" scope="col">{{ _('Dostęp') }}</th>
+                    @if ($is_owner)
                     <th class="text-center" scope="col">{{ _('Ostatnia modyfikacja') }}</th>
                     <th class="text-center" scope="col">{{ _('Oceny') }}</th>
                     <th class="text-center" scope="col">{{ _('Zmień poziom dostępu') }}</th>
                     <th class="text-center" scope="col">{{ _('Wyrzuć z kursu') }}</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +34,7 @@
                     <td class="text-center">
                         {{ $membership->AccessLevel->description }}
                     </td>
+                    @if ($is_owner)
                     <td class="text-center">
                         {{ $membership->updated_at }}
                     </td>
@@ -56,6 +59,7 @@
                             </h3>
                         </a>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

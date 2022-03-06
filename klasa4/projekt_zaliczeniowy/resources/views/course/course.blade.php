@@ -2,8 +2,13 @@
 
 @section('content')
 <div class="container">
-    @if(Auth::id() == $course->owner_id)
+    @php
+    $is_owner = Auth::id() == $course->owner_id;
+    @endphp
+    @if($is_owner || Auth::user()->CoursesTheMemberIsAssignedTo->contains($course))
     <h3>{{ $course->name }}</h3>
+    TODO:
+    {{ var_dump($is_owner) }}
     <!-- <div class="row"> -->
     <ul class="nav nav-tabs">
         <li class="nav-item">

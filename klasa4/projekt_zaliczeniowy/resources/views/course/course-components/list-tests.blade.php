@@ -1,11 +1,13 @@
 <div class="row justify-content-center">
     <div class="col">
+        @if ($is_owner)
         <div class="d-flex justify-content-end me-5 mt-3">
 
             <a type="button" class="col-3 btn btn-primary">
                 {{__('Utwórz test')}}
             </a>
         </div>
+        @endif
         <table class="table table-hover">
             Filter:
             <i class="fa fa-filter" aria-hidden="true"></i>
@@ -14,10 +16,14 @@
                     <th class="text-center" scope="col">#</th>
                     <th class="text-center" scope="col">{{ __('Nazwa testu') }}</th>
                     <th class="text-center" scope="col">{{ __('Opis') }}</th>
+                    @if ($is_owner)
                     <th class="text-center" scope="col">{{ __('Przesłano') }}</th>
                     <th class="text-center" scope="col">{{ __('Oceny') }}</th>
                     <th class="text-center" scope="col">{{ __('Edytuj test') }}</th>
                     <th class="text-center" scope="col">{{ __('Usuń test') }}</th>
+                    @else
+                    <th class="text-center" scope="col">{{ __('Wypełnij test') }}</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +38,7 @@
                     <td class="text-center">
                         {{ $test->description }}
                     </td>
+                    @if ($is_owner)
                     <td class="text-center">
                         {{ count($test->TestApproaches) }} / {{ count($course->Memberships) }}
                     </td>
@@ -56,6 +63,16 @@
                             </h3>
                         </a>
                     </td>
+                    @else
+                    <td class="text-center">
+                        <a class="text-decoration-none text-dark" href="#">
+                            <h3>
+                                <i class="fa fa-pencil-square text-muted" aria-hidden="true"></i>
+                                <i class="fa fa-pencil-square text-primary" aria-hidden="true"></i>
+                            </h3>
+                        </a>
+                    </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>
