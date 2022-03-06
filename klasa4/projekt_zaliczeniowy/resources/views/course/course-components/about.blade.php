@@ -38,7 +38,7 @@
                         <label for="owner" class="col-md-4 col-form-label text-md-end">{{ __('Właściciel:') }}</label>
 
                         <div class="col-md-6">
-                            <input id="owner" type="text" class="form-control @error('owner') is-invalid @enderror" name="owner" required value="{{$course->Owner()->first()->username}}">
+                            <input id="owner" type="text" class="form-control-plaintext @error('owner') is-invalid @enderror" name="owner" required value="{{$course->Owner()->first()->username}}" readonly>
                         </div>
                     </div>
 

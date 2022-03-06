@@ -1,13 +1,9 @@
-TODO: TESTS LIST
-
-<!-- {{ $course->Tests }} -->
-
 <div class="row justify-content-center">
     <div class="col">
-        <div class="d-flex justify-content-end me-5">
+        <div class="d-flex justify-content-end me-5 mt-3">
 
             <a type="button" class="col-3 btn btn-primary">
-                Utwórz test
+                {{__('Utwórz test')}}
             </a>
         </div>
         <table class="table table-hover">
@@ -16,12 +12,12 @@ TODO: TESTS LIST
             <thead>
                 <tr>
                     <th class="text-center" scope="col">#</th>
-                    <th class="text-center" scope="col">Nazwa testu</th>
-                    <th class="text-center" scope="col">Opis</th>
-                    <th class="text-center" scope="col">Przesłano</th>
-                    <th class="text-center" scope="col">Oceny</th>
-                    <th class="text-center" scope="col">Edytuj test</th>
-                    <th class="text-center" scope="col">Usuń test</th>
+                    <th class="text-center" scope="col">{{ __('Nazwa testu') }}</th>
+                    <th class="text-center" scope="col">{{ __('Opis') }}</th>
+                    <th class="text-center" scope="col">{{ __('Przesłano') }}</th>
+                    <th class="text-center" scope="col">{{ __('Oceny') }}</th>
+                    <th class="text-center" scope="col">{{ __('Edytuj test') }}</th>
+                    <th class="text-center" scope="col">{{ __('Usuń test') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,4 +63,3 @@ TODO: TESTS LIST
 
     </div>
 </div>
-TODO: course memberships

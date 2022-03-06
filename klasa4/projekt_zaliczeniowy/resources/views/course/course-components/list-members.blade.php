@@ -8,12 +8,12 @@
             <thead>
                 <tr>
                     <th class="text-center" scope="col">#</th>
-                    <th class="text-center" scope="col">Nazwa użytkownika</th>
-                    <th class="text-center" scope="col">Dostęp</th>
-                    <th class="text-center" scope="col">Ostatnia modyfikacja</th>
-                    <th class="text-center" scope="col">Oceny</th>
-                    <th class="text-center" scope="col">Zmień poziom dostępu</th>
-                    <th class="text-center" scope="col">Wyrzuć z kursu</th>
+                    <th class="text-center" scope="col">{{ _('Nazwa użytkownika') }}</th>
+                    <th class="text-center" scope="col">{{ _('Dostęp') }}</th>
+                    <th class="text-center" scope="col">{{ _('Ostatnia modyfikacja') }}</th>
+                    <th class="text-center" scope="col">{{ _('Oceny') }}</th>
+                    <th class="text-center" scope="col">{{ _('Zmień poziom dostępu') }}</th>
+                    <th class="text-center" scope="col">{{ _('Wyrzuć z kursu') }}</th>
                 </tr>
             </thead>
             <tbody>
