@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TestApproach extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'membership_id',
+        'test_id',
+    ];
 }

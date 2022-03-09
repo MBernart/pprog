@@ -66,10 +66,12 @@
                     @else
                     <td class="text-center">
                         <a class="text-decoration-none text-dark" href="#">
-                            <h3>
-                                <i class="fa fa-pencil-square text-muted" aria-hidden="true"></i>
-                                <i class="fa fa-pencil-square text-primary" aria-hidden="true"></i>
-                            </h3>
+                            <a href="{{ route('test-start-dialog', ['test_id' => $test->id]) }}">
+                                <h3>
+                                    <i class="fa fa-pencil-square text-muted" aria-hidden="true"></i>
+                                    <i class="fa fa-pencil-square text-primary" aria-hidden="true"></i>
+                                </h3>
+                            </a>
                         </a>
                     </td>
                     @endif

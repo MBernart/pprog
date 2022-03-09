@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Models\Course;
 use App\Models\LoginCredentials;
+use App\Models\Test;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -57,7 +59,8 @@ Route::post('updateEmail', [UserController::class, 'updateEmail'])
     ->name('updateEmail');
 
 Route::post('changePassword', [UserController::class, 'changePassword'])
-    ->name('changePassword');
+    ->name('changePassword')
+    ->middleware('auth');
 #endregion
 
 #region Courses
@@ -69,10 +72,35 @@ Route::get('courses', function ()
 Route::get('course/{course_id}', function ($course_id)
 {
     return view('course.course', ['course' => Course::where('id', $course_id)->first()]);
-})->middleware('auth');
+})->middleware('auth')
+    ->name('course');
+
+Route::get('course/test/approach/dialog/{test_id}', function ($test_id)
+{
+    return view('test.start-dialog', ['test' => Test::where('id', $test_id)->first()]);
+})->middleware('auth')
+    ->name('test-start-dialog');
+
+Route::get('course/test/approach/{test_id}', [TestController::class, 'startApproach'])
+    ->middleware('auth')
+    ->name('start-test');
+
+Route::get('course/test/approach/{test_id}/question', [TestController::class, 'handleTestApproach'])
+    ->middleware('auth')
+    ->name('test-question');
+
+Route::post('course/test/approach/{test_id}/question/submit', [TestController::class, 'handleTestApproach'])
+    ->middleware('auth')
+    ->name('submit-answer');
+    // ->name('submit-answer');
+
+// Route::put('course/test/approach/{question_id}', [TestController::class, 'submitAnswerAndGetNextQuestion'])
+// ->middleware('auth')
+// ->name('submit-answer');
 #endregion
 
-Route::group(['middleware' => 'prevent-back-history'],function(){
-	Auth::routes();
-	Route::get('/home', 'HomeController@index');
-});
+// Route::group(['middleware' => 'prevent-back-history'], function ()
+// {
+//     Auth::routes();
+//     Route::get('/home', 'HomeController@index');
+// });
