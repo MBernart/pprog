@@ -12,4 +12,6 @@ class TestApproach extends Model
         'membership_id',
         'test_id',
     ];
+
+    protected $primaryKey = 'id';
 }

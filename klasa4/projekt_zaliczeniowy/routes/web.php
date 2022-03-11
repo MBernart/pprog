@@ -92,6 +92,10 @@ Route::get('course/test/approach/{test_id}/question', [TestController::class, 'h
 Route::post('course/test/approach/{test_id}/question/submit', [TestController::class, 'handleTestApproach'])
     ->middleware('auth')
     ->name('submit-answer');
+
+Route::get('course/test/approach/results/{approach_id}', [TestController::class, 'displayResults'])
+    ->middleware('auth')
+    ->name('get-test-result');
     // ->name('submit-answer');
 
 // Route::put('course/test/approach/{question_id}', [TestController::class, 'submitAnswerAndGetNextQuestion'])
