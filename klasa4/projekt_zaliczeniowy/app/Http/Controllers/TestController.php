@@ -23,6 +23,18 @@ class TestController extends Controller
         return $nextQuestionId;
     }
 
+    function displayResults($approach_id)
+    {
+        return view('test.result', ['testApproach' => TestApproach::find($approach_id)]);
+    }
+
+    public function endTest()
+    {
+        $testApproach = TestApproach::find(session()->get('test_approach_id'));
+        $testApproach->end_time = now();
+        $testApproach->save();
+    }
+
     function createTestApproach($test_id)
     {
         $membership_id = Test::find($test_id)->Course->Memberships->where('user_id', Auth::id())->first()->id;
@@ -86,9 +98,13 @@ class TestController extends Controller
     {
         if (request()->has('answer'))
         {
-            return TestController::submitAnswerAndGetNextQuestion();
+            if (count(session()->get('questions_order')))
+                return TestController::submitAnswerAndGetNextQuestion();
+            else
+                TestController::endTest();
+            return redirect(route('get-test-result', ['approach_id' => session()->pull('test_approach_id')]));
         }
-        else 
+        else
         {
             return TestController::showNextQuestion(TestController::getNextQuestionsIdAndPopIt());
         }
