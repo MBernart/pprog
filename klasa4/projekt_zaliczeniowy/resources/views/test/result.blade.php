@@ -8,7 +8,7 @@
         <div class="card-body text-center">
             <h4 class="card-title">{{ __('Wyniki testu')}}</h4>
             <p>
-                {{ __('Nazwa testu:') }} {{ $testApproach }}
+                {{ __('Nazwa testu:') }} {{ $testApproach->Test->name }}
             </p>
             <p>
                 {{ __('Data rozpoczęcia:') }} {{ $testApproach->created_at }}
@@ -17,7 +17,7 @@
                 {{ __('Data przesłania:') }} {{ $testApproach->end_time }}
             </p>
             <p>
-                {{ __('Wynik:') }} TODO: wynik
+                {{ __('Wynik:') }} {{ $score[0] }} / {{ $score[1] }}
             </p>
 
         </div>

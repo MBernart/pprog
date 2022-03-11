@@ -13,5 +13,22 @@ class TestApproach extends Model
         'test_id',
     ];
 
+    public function Test()
+    {
+        return $this->hasOne(Test::class, 'id', "test_id");
+    }
+
+    public function getApproachAnswers()
+    {
+        return $this->hasMany(TestApproachAnswer::class, 'test_approach_id', 'id');
+    }
+
+    public function getScore()
+    {
+        $totalScore = $this->Test->Questions->sum('max_points');
+        $currentScore = $this->getApproachAnswers()->sum('score_awarded');
+        return [$currentScore, $totalScore];
+    }
+
     protected $primaryKey = 'id';
 }

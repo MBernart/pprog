@@ -25,7 +25,8 @@ class TestController extends Controller
 
     function displayResults($approach_id)
     {
-        return view('test.result', ['testApproach' => TestApproach::find($approach_id)]);
+        $thisApproach = TestApproach::find($approach_id);
+        return view('test.result', ['testApproach' => $thisApproach, 'score' => $thisApproach->getScore()]);
     }
 
     public function endTest()
@@ -85,11 +86,8 @@ class TestController extends Controller
     public function startApproach($test_id)
     {
         session()->forget(['questions_order', 'test_approach_id']);
-        if (!(session()->has('questions_order') && session()->has('test_approach_id')))
-        {
-            TestController::createTestApproach($test_id);
-            TestController::setShuffledQuestionsOrder($test_id);
-        }
+        TestController::createTestApproach($test_id);
+        TestController::setShuffledQuestionsOrder($test_id);
 
         return redirect(route('test-question', [$test_id]));
     }
@@ -101,7 +99,10 @@ class TestController extends Controller
             if (count(session()->get('questions_order')))
                 return TestController::submitAnswerAndGetNextQuestion();
             else
+            {
+                TestController::submitAnswerAndGetNextQuestion();
                 TestController::endTest();
+            }
             return redirect(route('get-test-result', ['approach_id' => session()->pull('test_approach_id')]));
         }
         else
