@@ -65,14 +65,17 @@
                     </td>
                     @else
                     <td class="text-center">
-                        <a class="text-decoration-none text-dark" href="#">
-                            <a href="{{ route('test-start-dialog', ['test_id' => $test->id]) }}">
-                                <h3>
-                                    <i class="fa fa-pencil-square text-muted" aria-hidden="true"></i>
-                                    <i class="fa fa-pencil-square text-primary" aria-hidden="true"></i>
-                                </h3>
-                            </a>
+                        @if ($test->usersEmptyApproaches(Auth::user())->exists())
+                        <a class="text-decoration-none text-dark" href="{{ route('test-start-dialog', ['test_id' => $test->id]) }}">
+                            <h3>
+                                <i class="fa fa-pencil-square text-primary" aria-hidden="true"></i>
+                            </h3>
                         </a>
+                        @else
+                        <h3>
+                            <i class="fa fa-pencil-square text-muted" aria-hidden="true"></i>
+                        </h3>
+                        @endif
                     </td>
                     @endif
                 </tr>

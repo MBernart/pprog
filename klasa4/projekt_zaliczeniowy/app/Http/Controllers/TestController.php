@@ -46,6 +46,17 @@ class TestController extends Controller
         session()->put('test_approach_id', $testApproach->id);
     }
 
+    public function setEmptyApproachInSession($test_id)
+    {
+        $test = Test::find($test_id);
+        // dd($membership_id, $test_id);
+        $testApproach = $test->usersEmptyApproaches(Auth::user())->first();
+        $testApproach->start_time = now();
+        // dd($testApproach);
+        $testApproach->save();
+        session()->put('test_approach_id', $testApproach->id);
+    }
+
     function showNextQuestion($question_id)
     {
         return view('test.question', ['question' => TestQuestion::where('id', $question_id)->first()]);
@@ -86,7 +97,7 @@ class TestController extends Controller
     public function startApproach($test_id)
     {
         session()->forget(['questions_order', 'test_approach_id']);
-        TestController::createTestApproach($test_id);
+        TestController::setEmptyApproachInSession($test_id);
         TestController::setShuffledQuestionsOrder($test_id);
 
         return redirect(route('test-question', [$test_id]));

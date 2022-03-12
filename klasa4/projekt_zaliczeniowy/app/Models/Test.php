@@ -23,4 +23,15 @@ class Test extends Model
     {
         return $this->belongsTo(Course::class, 'course_id', 'id');
     }
+
+    public function usersApproaches(User $user)
+    {
+        $membership = $user->Memberships->where('course_id', $this->Course->id)->first();
+        return $this->TestApproaches()->where('membership_id', $membership->id);
+    }
+
+    public function usersEmptyApproaches(User $user)
+    {
+        return $this->usersApproaches($user)->where('start_time', NULL);
+    }
 }

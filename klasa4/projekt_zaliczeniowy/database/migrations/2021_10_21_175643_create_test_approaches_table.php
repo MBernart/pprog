@@ -21,7 +21,7 @@ class CreateTestApproachesTable extends Migration
             $table->foreignId('test_id')
                 ->references('id')
                 ->on('tests');
-            $table->timestamp('start_time');
+            $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
             $table->timestamps();
         });
