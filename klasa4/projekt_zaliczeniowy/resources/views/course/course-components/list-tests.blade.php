@@ -40,7 +40,7 @@
                     </td>
                     @if ($is_owner)
                     <td class="text-center">
-                        {{ count($test->TestApproaches) }} / {{ count($course->Memberships) }}
+                        {{ count($test->TestApproaches()->whereNotNull('start_time')->get()) }} / {{ count($test->TestApproaches) }}
                     </td>
                     <td class="text-center">
                         <a class="text-decoration-none text-dark" href="#">
