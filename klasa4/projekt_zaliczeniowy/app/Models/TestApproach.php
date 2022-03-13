@@ -30,5 +30,15 @@ class TestApproach extends Model
         return [$currentScore, $totalScore];
     }
 
+    public function Membership()
+    {
+        return $this->hasOne(CourseMembership::class, 'id', 'membership_id');
+    }
+
+    public function User()
+    {
+        return $this->Membership()->first()->User();
+    }
+
     protected $primaryKey = 'id';
 }

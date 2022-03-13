@@ -39,9 +39,7 @@ class TestController extends Controller
     function createTestApproach($test_id)
     {
         $membership_id = Test::find($test_id)->Course->Memberships->where('user_id', Auth::id())->first()->id;
-        // dd($membership_id, $test_id);
         $testApproach = new TestApproach(['membership_id' => $membership_id, 'test_id' => $test_id]);
-        // dd($testApproach);
         $testApproach->save();
         session()->put('test_approach_id', $testApproach->id);
     }
@@ -49,10 +47,8 @@ class TestController extends Controller
     public function setEmptyApproachInSession($test_id)
     {
         $test = Test::find($test_id);
-        // dd($membership_id, $test_id);
         $testApproach = $test->usersEmptyApproaches(Auth::user())->first();
         $testApproach->start_time = now();
-        // dd($testApproach);
         $testApproach->save();
         session()->put('test_approach_id', $testApproach->id);
     }
@@ -91,7 +87,6 @@ class TestController extends Controller
         );
         $answer->save();
         return TestController::showNextQuestion(TestController::getNextQuestionsIdAndPopIt());
-        // return redirect(route('test-question', [$question->Test->id]));
     }
 
     public function startApproach($test_id)

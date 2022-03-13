@@ -71,13 +71,14 @@ Route::get('courses', function ()
 
 Route::get('course/{course_id}', function ($course_id)
 {
-    return view('course.course', ['course' => Course::where('id', $course_id)->first()]);
+    return view('course.course', ['course' => Course::find($course_id)]);
 })->middleware('auth')
     ->name('course');
 
+#region Tests
 Route::get('course/test/approach/dialog/{test_id}', function ($test_id)
 {
-    return view('test.start-dialog', ['test' => Test::where('id', $test_id)->first()]);
+    return view('test.start-dialog', ['test' => Test::find($test_id)]);
 })->middleware('auth')
     ->name('test-start-dialog');
 
@@ -96,15 +97,13 @@ Route::post('course/test/approach/{test_id}/question/submit', [TestController::c
 Route::get('course/test/approach/results/{approach_id}', [TestController::class, 'displayResults'])
     ->middleware('auth')
     ->name('get-test-result');
-    // ->name('submit-answer');
 
-// Route::put('course/test/approach/{question_id}', [TestController::class, 'submitAnswerAndGetNextQuestion'])
-// ->middleware('auth')
-// ->name('submit-answer');
-#endregion
+Route::get('course/test/{test_id}/grades', function ($test_id)
+{
+    return view('test.grades', ['test' => Test::find($test_id)]);
+})
+    ->name('get-test-grades');
 
-// Route::group(['middleware' => 'prevent-back-history'], function ()
-// {
-//     Auth::routes();
-//     Route::get('/home', 'HomeController@index');
-// });
+#endregion Tests
+
+#endregion Courses

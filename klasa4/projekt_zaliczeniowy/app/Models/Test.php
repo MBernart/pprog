@@ -32,6 +32,6 @@ class Test extends Model
 
     public function usersEmptyApproaches(User $user)
     {
-        return $this->usersApproaches($user)->where('start_time', NULL);
+        return $this->usersApproaches($user)->whereNull('start_time');
     }
 }

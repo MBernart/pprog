@@ -43,7 +43,7 @@
                         {{ count($test->TestApproaches()->whereNotNull('start_time')->get()) }} / {{ count($test->TestApproaches) }}
                     </td>
                     <td class="text-center">
-                        <a class="text-decoration-none text-dark" href="#">
+                        <a class="text-decoration-none text-dark" href="{{ route('get-test-grades', $test->id)}}">
                             <h3>
                                 <i class="fa fa-book" aria-hidden="true"></i>
                             </h3>
