@@ -132,7 +132,6 @@ class TestController extends Controller
                 'required_score' => "numeric|between:0," . $test->Questions()->sum('max_points')
             ]
         )->validate();
-        dd("between:0," . $test->Questions()->sum('max_points'), request('required_score'));
         if (!(Auth::user()->CanEditTest($test) || $test->Course->Owner == Auth::user()))
             abort(403, "Access denied");
         $propertiesToChange = request($test->getFillable());
