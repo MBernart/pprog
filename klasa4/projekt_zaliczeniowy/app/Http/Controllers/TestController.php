@@ -27,6 +27,8 @@ class TestController extends Controller
     function displayResults($approach_id)
     {
         $thisApproach = TestApproach::find($approach_id);
+        if ($thisApproach->User != Auth::user())
+            abort(403, "Access Denied");
         return view('test.approach.result', ['testApproach' => $thisApproach, 'score' => $thisApproach->getScore()]);
     }
 
