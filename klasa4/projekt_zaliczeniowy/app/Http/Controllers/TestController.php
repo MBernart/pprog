@@ -9,11 +9,12 @@ use App\Models\TestApproachAnswer;
 use Illuminate\Http\Request;
 use App\Models\TestQuestion;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Tests\TestCase;
 
 class TestController extends Controller
 {
-
+    #region Approach
     function getNextQuestionsIdAndPopIt()
     {
         $nextIDs = session()->pull('questions_order');
@@ -116,4 +117,36 @@ class TestController extends Controller
             return TestController::showNextQuestion(TestController::getNextQuestionsIdAndPopIt());
         }
     }
+    #endregion
+
+    #region Edit
+
+    public function editTest($test_id)
+    {
+        $test = Test::find($test_id);
+        Validator::make(
+            request()->all(),
+            [
+                'name' => 'string',
+                'description' => 'string',
+                'required_score' => "numeric|between:0," . $test->Questions()->sum('max_points')
+            ]
+        )->validate();
+        dd("between:0," . $test->Questions()->sum('max_points'), request('required_score'));
+        if (!(Auth::user()->CanEditTest($test) || $test->Course->Owner == Auth::user()))
+            abort(403, "Access denied");
+        $propertiesToChange = request($test->getFillable());
+        foreach ($propertiesToChange as $key => $value)
+        {
+            $trimmedValue = trim($value);
+            if ($test[$key] == $trimmedValue)
+                continue;
+            $test[$key] = $trimmedValue;
+            session()->put($key . "Changed", __("Zmieniono poprawnie"));
+        }
+        $test->save();
+        return redirect()->back();
+        dd($test);
+    }
+    #endregion
 }

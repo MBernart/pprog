@@ -23,17 +23,16 @@
                         {{ __('Zobacz odpowiedzi') }}
                     </th>
                 </tr>
-                @foreach ($test->TestApproaches as $approach)
+                @foreach ($test->TestApproaches->sortByDesc('end_time') as $approach)
                 @php
                 $score = $approach->getScore();
                 @endphp
-
-                @if (empty($approach->end_time))
-                @continue
-                @elseif ($score[0] >= $test->required_score)
+                @if ($score[0] >= $test->required_score)
                 <tr class="table-success">
-                    @else
+                    @elseif (!empty($approach->end_time))
                 <tr class="table-danger">
+                    @else 
+                    <tr>
                     @endif
                     <td>
                         {{ $approach->User->username }}

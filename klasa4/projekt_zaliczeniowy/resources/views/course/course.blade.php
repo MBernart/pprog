@@ -22,14 +22,15 @@
         </li>
     </ul>
     @switch (Request::get('tab'))
-    @case ('tests')
-    @include('course.course-components.list-tests')
-    @break
     @case ('about')
     @include('course.course-components.about')
     @break
     @case ('members')
     @include('course.course-components.list-members')
+    @break
+    @case ('tests')
+    @default
+    @include('course.course-components.list-tests')
     @break
     @endswitch
     @endif

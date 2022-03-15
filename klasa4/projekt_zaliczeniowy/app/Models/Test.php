@@ -9,6 +9,13 @@ class Test extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'required_score',
+        'duration'
+    ];
+
     public function Questions()
     {
         return $this->hasMany(TestQuestion::class, 'test_id', 'id');

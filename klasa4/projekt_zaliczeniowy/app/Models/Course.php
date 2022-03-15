@@ -20,6 +20,11 @@ class Course extends Model
         return $this->hasMany(CourseMembership::class, 'course_id', 'id');
     }
 
+    public function UsersMembership(User $user)
+    {
+        return $this->Memberships->where('user_id', $user->id);
+    }
+
     public function Tests()
     {
         return $this->hasMany(Test::class, 'course_id', 'id');

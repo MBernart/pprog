@@ -63,4 +63,10 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($password);
     }
+
+    public function CanEditTest($test)
+    {
+        $membership = $test->Course->UsersMembership($this)->first();
+        return $membership->CanEditTest();
+    }
 }

@@ -31,7 +31,7 @@
 
                                 @if(Session::has('emailChanged'))
                                 <span class="valid-feedback d-block" role="alert">
-                                    <strong> {{ Session::get('emailChanged') }}</strong>
+                                    <strong> {{ Session::pull('emailChanged') }}</strong>
                                 </span>
                                 @endif
 

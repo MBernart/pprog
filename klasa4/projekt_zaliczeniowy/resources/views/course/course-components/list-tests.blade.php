@@ -50,7 +50,7 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <a class="text-decoration-none text-dark" href="#">
+                        <a class="text-decoration-none text-dark" href="{{ route('edit-test', $test->id) }}">
                             <h3>
                                 <i class="fa fa-tasks" aria-hidden="true"></i>
                             </h3>

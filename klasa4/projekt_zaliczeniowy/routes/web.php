@@ -101,8 +101,18 @@ Route::get('course/test/approach/results/{approach_id}', [TestController::class,
 Route::get('course/test/{test_id}/grades', function ($test_id)
 {
     return view('test.grades', ['test' => Test::find($test_id)]);
-})
+})->middleware('auth')
     ->name('get-test-grades');
+
+Route::get('course/test/{test_id}/edit', function ($test_id)
+{
+    return view('test.edit', ['test' => Test::find($test_id)]);
+})->middleware('auth')
+    ->name('edit-test');
+
+Route::post('course/test/{test_id}/edit/submit', [TestController::class, 'editTest'])
+    ->middleware('auth')
+    ->name('edit-test-submit');
 
 #endregion Tests
 
