@@ -27,7 +27,7 @@ class TestController extends Controller
     function displayResults($approach_id)
     {
         $thisApproach = TestApproach::find($approach_id);
-        return view('test.result', ['testApproach' => $thisApproach, 'score' => $thisApproach->getScore()]);
+        return view('test.approach.result', ['testApproach' => $thisApproach, 'score' => $thisApproach->getScore()]);
     }
 
     public function endTest()
@@ -56,7 +56,7 @@ class TestController extends Controller
 
     function showNextQuestion($question_id)
     {
-        return view('test.question', ['question' => TestQuestion::where('id', $question_id)->first()]);
+        return view('test.approach.question', ['question' => TestQuestion::where('id', $question_id)->first()]);
     }
 
     function setShuffledQuestionsOrder($test_id)

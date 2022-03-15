@@ -78,7 +78,7 @@ Route::get('course/{course_id}', function ($course_id)
 #region Tests
 Route::get('course/test/approach/dialog/{test_id}', function ($test_id)
 {
-    return view('test.start-dialog', ['test' => Test::find($test_id)]);
+    return view('test.approach.start-dialog', ['test' => Test::find($test_id)]);
 })->middleware('auth')
     ->name('test-start-dialog');
 
@@ -100,13 +100,13 @@ Route::get('course/test/approach/results/{approach_id}', [TestController::class,
 
 Route::get('course/test/{test_id}/grades', function ($test_id)
 {
-    return view('test.grades', ['test' => Test::find($test_id)]);
+    return view('test.admin.grades', ['test' => Test::find($test_id)]);
 })->middleware('auth')
     ->name('get-test-grades');
 
 Route::get('course/test/{test_id}/edit', function ($test_id)
 {
-    return view('test.edit', ['test' => Test::find($test_id)]);
+    return view('test.admin.edit', ['test' => Test::find($test_id)]);
 })->middleware('auth')
     ->name('edit-test');
 
@@ -114,6 +114,10 @@ Route::post('course/test/{test_id}/edit/submit', [TestController::class, 'editTe
     ->middleware('auth')
     ->name('edit-test-submit');
 
+Route::get('tests', function ()
+{
+    return view('test.list');
+});
 #endregion Tests
 
 #endregion Courses
