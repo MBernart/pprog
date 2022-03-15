@@ -19,6 +19,15 @@
             <p>
                 {{ __('Wynik:') }} {{ $score[0] }} / {{ $score[1] }}
             </p>
+            @if ( $testApproach->Test->required_score <= $score[0] )
+             <p class="text-success h3 fw-bolder">
+                {{ __('Wynik pozytywny') }}
+                </p>
+                @else
+                <p class="text-danger h3 fw-bolder">
+                    {{ __('Niepowodzenie') }}
+                </p>
+                @endif
 
         </div>
     </div>
