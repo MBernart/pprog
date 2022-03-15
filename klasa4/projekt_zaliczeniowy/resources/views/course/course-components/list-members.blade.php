@@ -23,6 +23,9 @@
                 @php
                 $user = $membership->User;
                 @endphp
+                @if ($course->Owner == $user)
+                    @continue
+                @endif
                 <!-- {{ $membership }} -->
                 <tr>
                     <th class="text-center">
