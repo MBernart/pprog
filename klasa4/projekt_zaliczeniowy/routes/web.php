@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Models\Course;
@@ -75,6 +76,9 @@ Route::get('course/{course_id}', function ($course_id)
 })->middleware('auth')
     ->name('course');
 
+Route::post('course/{course_id}/edit', [CourseController::class, 'editCourse'])
+    ->middleware('auth')
+    ->name('course-edit');
 #region Tests
 Route::get('course/test/approach/dialog/{test_id}', function ($test_id)
 {
