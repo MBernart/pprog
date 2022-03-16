@@ -2,10 +2,10 @@
     <div class="col">
         @if ($is_owner)
         <div class="d-flex justify-content-end me-5 mt-3">
-
-            <a type="button" class="col-3 btn btn-primary">
-                {{__('Utwórz test')}}
-            </a>
+            <form action="{{ route('create-test', $course->id) }}" method="post">
+                @csrf
+                <input type="submit" class="btn btn-primary" value="{{__('Utwórz test')}}">
+            </form>
         </div>
         @endif
         <table class="table table-hover">
@@ -20,6 +20,7 @@
                     <th class="text-center" scope="col">{{ __('Przesłano') }}</th>
                     <th class="text-center" scope="col">{{ __('Oceny') }}</th>
                     <th class="text-center" scope="col">{{ __('Edytuj test') }}</th>
+                    <th class="text-center" scope="col">{{ __('Rozpocznij test') }}</th>
                     <th class="text-center" scope="col">{{ __('Usuń test') }}</th>
                     @else
                     <th class="text-center" scope="col">{{ __('Wypełnij test') }}</th>
@@ -53,6 +54,13 @@
                         <a class="text-decoration-none text-dark" href="{{ route('edit-test', $test->id) }}">
                             <h3>
                                 <i class="fa fa-tasks" aria-hidden="true"></i>
+                            </h3>
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a class="text-decoration-none text-dark" href="#">
+                            <h3>
+                                <i class="fa fa-play" aria-hidden="true"></i>
                             </h3>
                         </a>
                     </td>

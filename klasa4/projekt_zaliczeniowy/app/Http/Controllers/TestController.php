@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\QuestionAnswer;
 use App\Models\TestApproach;
 use App\Models\Test;
@@ -149,5 +150,24 @@ class TestController extends Controller
         return redirect()->back();
         dd($test);
     }
-    #endregion
+    #endregion Edit
+
+    #region Create
+
+    public function createTest($course_id)
+    {
+        // TODO: 
+        // if (!Auth::CanCreateTest(Course::find($course_id)))
+        // {
+        //     abort(403, "Access denied");
+        // }
+
+        $course = Course::find($course_id);
+        $test = new Test(['name' => '', 'description' => '', 'duration' => 10]);
+        $course->Tests()->save($test);
+        $test->save();
+        return redirect(route('edit-test', $test->id));
+    }
+
+    #endregion Create
 }

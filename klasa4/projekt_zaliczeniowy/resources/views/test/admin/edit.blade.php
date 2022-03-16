@@ -7,7 +7,7 @@
     <div class="row justify-content-center d-flex">
         <div class="col">
             <div class="ps-2 pb-2">
-                <a href="{{ route('course', $test->id) }}" class="h3 text-decoration-none text-dark">
+                <a href="{{ route('course', $test->Course->id) }}" class="h3 text-decoration-none text-dark">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>
                 </a>
             </div>

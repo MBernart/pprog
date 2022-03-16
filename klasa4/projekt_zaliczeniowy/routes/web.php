@@ -80,6 +80,11 @@ Route::post('course/{course_id}/edit', [CourseController::class, 'editCourse'])
     ->middleware('auth')
     ->name('course-edit');
 #region Tests
+
+Route::post('course/test/create/{course_id}', [TestController::class, 'createTest'])
+    ->middleware('auth')
+    ->name('create-test');
+
 Route::get('course/test/approach/dialog/{test_id}', function ($test_id)
 {
     return view('test.approach.start-dialog', ['test' => Test::find($test_id)]);
