@@ -41,4 +41,10 @@ class Test extends Model
     {
         return $this->usersApproaches($user)->whereNull('start_time');
     }
+
+    public function CreateApproach(CourseMembership $courseMembership)
+    {
+        $testApproach = new TestApproach(['test_id' => $this->id, 'membership_id' => $courseMembership->id]);
+        $testApproach->save();
+    }
 }

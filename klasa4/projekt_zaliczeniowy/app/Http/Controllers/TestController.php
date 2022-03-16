@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseMembership;
 use App\Models\QuestionAnswer;
 use App\Models\TestApproach;
 use App\Models\Test;
@@ -167,6 +168,27 @@ class TestController extends Controller
         $course->Tests()->save($test);
         $test->save();
         return redirect(route('edit-test', $test->id));
+    }
+
+    public function createApproach($test_id, $membership_id)
+    {
+        // if (!Auth::CanCreateApproach(Test::find($test_id)))
+        // {
+        //     abort(403, "Access denied");
+        // }
+
+        $test = Test::find($test_id);
+        $test->CreateApproach(CourseMembership::find($membership_id));
+    }
+
+    public function createApproaches($test_id)
+    {
+        foreach (request('membership') as $key => $value)
+        {
+            TestController::createApproach($test_id, $value);
+            session()->put('createdApproach', __('Poprawnie utworzono podejście'));
+        }
+        return redirect()->back();
     }
 
     #endregion Create

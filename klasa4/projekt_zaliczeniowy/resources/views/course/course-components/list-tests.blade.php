@@ -58,7 +58,7 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <a class="text-decoration-none text-dark" href="#">
+                        <a class="text-decoration-none text-dark" href="{{ route('publish-test', $test->id) }}">
                             <h3>
                                 <i class="fa fa-play" aria-hidden="true"></i>
                             </h3>

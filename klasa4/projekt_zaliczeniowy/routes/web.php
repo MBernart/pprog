@@ -123,6 +123,18 @@ Route::post('course/test/{test_id}/edit/submit', [TestController::class, 'editTe
     ->middleware('auth')
     ->name('edit-test-submit');
 
+Route::get('course/test/{test_id}/publish', function ($test_id)
+{
+    return view('test.admin.publish', ['test' => Test::find($test_id)]);
+})->middleware('auth')
+    ->name('publish-test');
+
+Route::post('course/test/{test_id}/publish/submit', [TestController::class, 'createApproaches'])
+    ->middleware('auth')
+    ->name('publish-test-submit');
+
+
+
 Route::get('tests', function ()
 {
     return view('test.list');
