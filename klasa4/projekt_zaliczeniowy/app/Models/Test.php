@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use function PHPUnit\Framework\returnSelf;
+
 class Test extends Model
 {
     use HasFactory;
@@ -44,6 +46,8 @@ class Test extends Model
 
     public function CreateApproach(CourseMembership $courseMembership)
     {
+        if ($this->usersEmptyApproaches($courseMembership->User)->first() != NULL)
+            return;
         $testApproach = new TestApproach(['test_id' => $this->id, 'membership_id' => $courseMembership->id]);
         $testApproach->save();
     }

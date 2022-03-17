@@ -4,6 +4,11 @@
 
 @section('content')
 <div class="container">
+    <div class="ps-2 pb-2">
+        <a href="{{ route('course', $test->Course->id) }}" class="h3 text-decoration-none text-dark">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </a>
+    </div>
     <div class="card mb-2">
         <div class="card-body">
             <h5 class="card-title">{{ __('Wyniki testu: ') }}{{ $test->name }}</h5>
@@ -31,8 +36,8 @@
                 <tr class="table-success">
                     @elseif (!empty($approach->end_time))
                 <tr class="table-danger">
-                    @else 
-                    <tr>
+                    @else
+                <tr>
                     @endif
                     <td>
                         {{ $approach->User->username }}

@@ -48,7 +48,17 @@ class CourseMembership extends Model
 
     public function TestApproaches()
     {
-        return $this->hasMany(TestApproach::class, 'id', 'membership_id');
+        return $this->hasMany(TestApproach::class, 'membership_id', 'id');
+    }
+
+    public function EmptyApproaches()
+    {
+        return $this->TestApproaches()->where('start_time', NULL);
+    }
+
+    public function HasEmptyApproaches() :bool
+    {
+        return $this->EmptyApproaches->isNotEmpty();
     }
 
     public function CanEditTest()

@@ -28,18 +28,22 @@
                                         <label for="membership[]" class="form-check-label">
                                             {{ $membership->user->username }}:
                                         </label>
-                                        <input class="form-check-input" type="checkbox" name="membership[]" value="{{ $membership->id }}">
+                                        <input class="form-check-input" type="checkbox" name="membership[]" value="{{ $membership->id }}" @if ($membership->HasEmptyApproaches()) disabled @endif>
+                                        @if ($membership->HasEmptyApproaches())
+                                        <br>
+                                        <span class="text-info">{{ __('Ten użytkownik ma nieukończone podejście') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 @endforeach
                                 <input class="btn btn-primary" type="submit" value="{{ __('Publikuj') }}">
                             </div>
                         </div>
-                            @if(Session::has('createdApproach'))
-                            <span class="text-success h4" role="alert">
-                                <strong> {{ Session::pull('createdApproach') }}</strong>
-                            </span>
-                            @endif
+                        @if(Session::has('createdApproach'))
+                        <span class="text-success h4" role="alert">
+                            <strong> {{ Session::pull('createdApproach') }}</strong>
+                        </span>
+                        @endif
                     </form>
                 </div>
             </div>
