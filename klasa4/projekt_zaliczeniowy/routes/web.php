@@ -79,6 +79,19 @@ Route::get('course/{course_id}', function ($course_id)
 Route::post('course/{course_id}/edit', [CourseController::class, 'editCourse'])
     ->middleware('auth')
     ->name('course-edit');
+
+Route::get('course/{course_id}/add-members', function ($course_id)
+{
+    return view('course.admin.add-members', [
+        'course' => Course::find($course_id),
+        'users' => User::all()
+    ]);
+})->middleware('auth')
+    ->name('course-add-members');
+
+Route::post('course/{course_id}/add-members/submit', [CourseController::class, 'addMembers'])
+    ->middleware('auth')
+    ->name('course-add-members-submit');
 #region Tests
 
 Route::post('course/test/create/{course_id}', [TestController::class, 'createTest'])
@@ -132,8 +145,6 @@ Route::get('course/test/{test_id}/publish', function ($test_id)
 Route::post('course/test/{test_id}/publish/submit', [TestController::class, 'createApproaches'])
     ->middleware('auth')
     ->name('publish-test-submit');
-
-
 
 Route::get('tests', function ()
 {

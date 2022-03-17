@@ -42,4 +42,17 @@ class Course extends Model
             return true;
         return false;
     }
+
+    public function CanAddMember($user)
+    {
+        if ($this->Owner == $user)
+            return true;
+        return false;
+    }
+
+    public function AddMember(User $user)
+    {
+        $membership = new CourseMembership(['course_id' => $this->id, 'user_id' => $user->id, 'access_level' => 1]);
+        $membership->save();
+    }
 }

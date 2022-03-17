@@ -1,7 +1,14 @@
 <div class="row justify-content-center">
     <div class="col">
+        @if ($is_owner)
+        <div class="d-flex justify-content-end me-5 mt-3">
+            <a href="{{ route('course-add-members', $course->id) }}">
+                <button class="btn btn-primary">{{ __('Dodaj uczestników') }}</button>
+            </a>
+        </div>
+        @endif
         <table class="table table-hover">
-            Filter: 
+            Filter:
             <i class="fa fa-filter" aria-hidden="true"></i>
 
             TODO: Filter
@@ -24,7 +31,7 @@
                 $user = $membership->User;
                 @endphp
                 @if ($course->Owner == $user)
-                    @continue
+                @continue
                 @endif
                 <!-- {{ $membership }} -->
                 <tr>

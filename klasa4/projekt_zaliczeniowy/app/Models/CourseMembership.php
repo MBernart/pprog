@@ -9,6 +9,12 @@ class CourseMembership extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'course_id',
+        'access_level'
+    ];
+
     /***
      * TODO:
      * Permission System: 
