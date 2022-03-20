@@ -49,7 +49,7 @@
                         {{ $approach->end_time }}
                     </td>
                     <td>
-                        <a class="text-decoration-none text-dark" href="#">
+                        <a class="text-decoration-none text-dark" href="{{ route('get-approach-answers', $approach->id ) }}">
                             <i class="fa fa-check-square-o" aria-hidden="true"> TODO: list answers view</i>
                         </a>
                     </td>

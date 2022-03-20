@@ -14,4 +14,17 @@ class TestApproachAnswer extends Model
         'given_answer_id',
         'score_awarded'
     ];
+
+    // QuestionAnswer
+
+    public function Question()
+    {
+        return $this->hasOne(TestQuestion::class, 'id', 'question_id');
+    }
+
+
+    public function GivenAnswer()
+    {
+        return $this->hasOne(QuestionAnswer::class, 'id', 'given_answer_id');
+    }
 }

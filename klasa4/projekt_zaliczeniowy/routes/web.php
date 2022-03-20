@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Models\Course;
 use App\Models\LoginCredentials;
 use App\Models\Test;
+use App\Models\TestApproach;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -150,6 +151,13 @@ Route::get('tests', function ()
 {
     return view('test.list');
 });
+
+Route::get('course/test/grades/{approach_id}/answers', function ($approach_id)
+{
+    return view('test.admin.approach-answers', ['approach' => TestApproach::find($approach_id)]);
+})->middleware('auth')
+    ->name('get-approach-answers');
+
 #endregion Tests
 
 #endregion Courses
